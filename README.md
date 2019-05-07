@@ -13,9 +13,9 @@
 - ユーザ登録し、自分が登録したタスクだけを見られるようにしたい
 
 # Dependency
-Ruby
-Ruby on Rails
-PostgreSQL
+- Ruby
+- Ruby on Rails
+- PostgreSQL
 
 # Setup
 
@@ -27,4 +27,3 @@ PostgreSQL
 [株式会社万葉の新入社員教育用カリキュラム](https://github.com/everyleaf/el-training)
 
 # References
-参考にした情報源（サイト・論文）などの情報、リンク
