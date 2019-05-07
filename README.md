@@ -24,6 +24,6 @@
 # Licence
 
 # Authors
-[株式会社万葉の新入社員教育用カリキュラム](https://github.com/everyleaf/el-training)
-
+Ken Sato
 # References
+[株式会社万葉の新入社員教育用カリキュラム](https://github.com/everyleaf/el-training)
