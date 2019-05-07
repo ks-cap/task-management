@@ -1,24 +1,30 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# task-management
+## タスク管理システム
+- 自分のタスクを簡単に登録したい
+- タスクに終了期限を設定できるようにしたい
+- タスクに優先順位をつけたい
+- ステータス（未着手・着手・完了）を管理したい
+- ステータスでタスクを絞り込みたい
+- タスク名・タスクの説明文でタスクを検索したい
+- タスクを一覧したい。一覧画面で（優先順位、終了期限などを元にして）ソートしたい
+- タスクにラベルなどをつけて分類したい
+- ユーザ登録し、自分が登録したタスクだけを見られるようにしたい
 
-Things you may want to cover:
+# Dependency
+Ruby
+Ruby on Rails
+PostgreSQL
 
-* Ruby version
+# Setup
 
-* System dependencies
+# Usage
 
-* Configuration
+# Licence
 
-* Database creation
+# Authors
+[株式会社万葉の新入社員教育用カリキュラム](https://github.com/everyleaf/el-training)
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# References
+参考にした情報源（サイト・論文）などの情報、リンク
