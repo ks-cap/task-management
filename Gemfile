@@ -68,3 +68,6 @@ gem 'html2slim'
 
 # Using bootstrap
 gem 'bootstrap'
+
+# Link URL
+gem 'rails_autolink'
