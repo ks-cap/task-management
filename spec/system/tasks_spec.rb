@@ -6,6 +6,8 @@ describe 'タスク管理機能', type: :system do
   let(:user_b) { FactoryBot.create(:user, name: 'ユーザーB', email: 'b@example.com') }
   # ユーザーAのタスクを作成するタイミングで、user_aを利用する。この時点でuser_aがデータベースに登録される。
   let!(:task_a) { FactoryBot.create(:task, name: '最初のタスク', user: user_a) }
+  let!(:task_b) { FactoryBot.create(:task, name: '次のタスク', user: user_a) }
+  let!(:task_c) { FactoryBot.create(:task, name: '最後のタスク', user: user_a) }
 
   # contextの内容が呼び出される前に実行(1つのdescribeの中に複数のcontextが存在する場合contextの外側のbeforeが呼ばれる)
   before do

@@ -72,3 +72,6 @@ gem 'bootstrap'
 
 # Link URL
 gem 'rails_autolink'
+
+# Search function
+gem 'ransack'
