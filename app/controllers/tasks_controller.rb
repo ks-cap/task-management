@@ -31,6 +31,7 @@ class TasksController < ApplicationController
       redirect_to tasks_url, notice: "タスク「#{@task.name}」を更新しました。"
     else
       render :edit
+    end
   end
 
   def destroy
