@@ -68,6 +68,16 @@ describe 'タスク管理機能', type: :system do
       end
     end
 
+    context '新規作成画面で名称を入力しなかったとき' do
+      let(:task_name) { '' }
+
+      it 'エラーとなる' do
+        # within: 探索する範囲を画面内の特定の範囲に狭める
+        within '#error_explanation' do
+          expect(page).to have_content '名称を入力してください'
+        end
+      end
+    end
   end
 end
 
