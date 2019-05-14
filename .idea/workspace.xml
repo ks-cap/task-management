@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c896dcea-f542-4325-9f77-3fe81c1a9a83" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/views/tasks/index.html.slim" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/tasks/index.html.slim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/factories/tasks.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/factories/tasks.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -101,11 +102,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/tasks/index.html.slim">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+            <state relative-caret-position="325">
+              <caret line="20" column="69" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spec/factories/tasks.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="84">
+              <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/spec/system/tasks_spec.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="11" column="44" lean-forward="true" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -178,6 +197,8 @@
         <option value="$PROJECT_DIR$/app/views/tasks/_form.html.slim" />
         <option value="$PROJECT_DIR$/config/locales/ja.yml" />
         <option value="$PROJECT_DIR$/app/views/tasks/index.html.slim" />
+        <option value="$PROJECT_DIR$/spec/factories/tasks.rb" />
+        <option value="$PROJECT_DIR$/spec/system/tasks_spec.rb" />
       </list>
     </option>
   </component>
@@ -254,6 +275,29 @@
               <item name="task-management" type="b2602c69:ProjectViewProjectNode" />
               <item name="task-management" type="462c0819:PsiDirectoryNode" />
               <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="task-management" type="b2602c69:ProjectViewProjectNode" />
+              <item name="task-management" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+              <item name="migrate" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="task-management" type="b2602c69:ProjectViewProjectNode" />
+              <item name="task-management" type="462c0819:PsiDirectoryNode" />
+              <item name="spec" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="task-management" type="b2602c69:ProjectViewProjectNode" />
+              <item name="task-management" type="462c0819:PsiDirectoryNode" />
+              <item name="spec" type="462c0819:PsiDirectoryNode" />
+              <item name="factories" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="task-management" type="b2602c69:ProjectViewProjectNode" />
+              <item name="task-management" type="462c0819:PsiDirectoryNode" />
+              <item name="spec" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -399,12 +443,12 @@
       <workItem from="1557800667530" duration="65000" />
       <workItem from="1557800894872" duration="63000" />
       <workItem from="1557800982714" duration="1304000" />
-      <workItem from="1557806095075" duration="3653000" />
+      <workItem from="1557806095075" duration="4759000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6078000" />
+    <option name="totallyTimeSpent" value="7184000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="953" extended-state="6" />
@@ -619,8 +663,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/tasks/index.html.slim">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+        <state relative-caret-position="325">
+          <caret line="20" column="69" selection-start-line="20" selection-start-column="69" selection-end-line="20" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/factories/tasks.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/system/tasks_spec.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="44" lean-forward="true" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
         </state>
       </provider>
     </entry>
