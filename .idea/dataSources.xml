@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Rails task-management: development" uuid="cbf2e08a-aba4-469d-a65e-0d06ea3f712c">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/task-management_development</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails task-management: test" uuid="73518222-30d5-413a-a30f-5126bd66f49b">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/task-management_test</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails task-management: production" uuid="4534b7ee-7aa7-4a7c-8364-5e98cda1c143">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/task-management_production</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="task-management_development@localhost" uuid="6333ee94-0c0a-4bb9-a8e8-6762b84bcce1">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/task-management_development</jdbc-url>
+    </data-source>
+  </component>
+</project>

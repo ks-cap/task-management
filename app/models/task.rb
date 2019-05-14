@@ -8,8 +8,9 @@ class Task < ApplicationRecord
 
   scope :recent, -> { order(created_at: :desc) }
 
+  # ransack使用時の制約追加
   def self.ransackable_attributes(auth_object = nil)
-    %w[name created_at]
+    %w[name created_at deadline]
   end
 
   def self.ransackable_associations(auth_object = nil)
