@@ -76,5 +76,5 @@ gem 'rails_autolink'
 # Search function
 gem 'ransack'
 
-# Pagenation
+# Pagination
 gem 'kaminari'
