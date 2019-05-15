@@ -1,6 +1,7 @@
 class Task < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 30 }
+  validates :description, length: { maxmum: 100 }
   validates :state, presence: true
 
   validate :validate_name_not_including_comma
