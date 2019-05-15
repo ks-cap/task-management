@@ -8,6 +8,8 @@ class Task < ApplicationRecord
 
   scope :recent, -> { order(created_at: :desc) }
 
+  enum task_state: [['---', ""], ['未着手', 1], ['着手中', 2], ['完了', 3]]
+
   # ransack使用時の制約追加
   def self.ransackable_attributes(auth_object = nil)
     %w[name created_at deadline]
