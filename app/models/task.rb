@@ -1,6 +1,8 @@
 class Task < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 30 }
+  validates :state, presence: true
+
   validate :validate_name_not_including_comma
 
   # UserとTaskは１対多の関係
