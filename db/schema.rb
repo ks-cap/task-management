@@ -22,8 +22,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_055015) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.datetime "deadline"
-    t.string "aasm_state"
-    t.string "state", default: "---", null: false
+    t.string "state", default: "未着手", null: false
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 

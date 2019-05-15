@@ -16,5 +16,5 @@
     = f.datetime_select :deadline, {}, class: 'form-control date-picker', id: 'task_deadline'
   .form-group
     = f.label :state
-    = f.select :task_state, Task.task_states.keys, {}, class: 'select-default'
+    = f.select :state, Task.states.keys.to_a, {}
   = f.submit nil, class: 'btn btn-primary'
