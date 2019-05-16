@@ -27,15 +27,14 @@ class Task < ApplicationRecord
 
   private
   def validate_name_not_including_comma
-    errors.add(:name, 'にカンマを含めることはできません') if name&.include?(',')
+    errors.add(:name, I18n.t('activerecord.errors.messages.task.name.comma', locale: :ja)) if name&.include?(',')
   end
 
   def image_type
     if !image.attached?
-      errors.add(:image, 'ファイルが存在しません')
+      errors.add(:image, I18n.t('activerecord.errors.messages.task.image.no_file', locale: :ja))
     elsif !image.content_type.in?(%("image/jpeg image/png"))
-      errors.add(:image, 'JPEGとPNG以外の画像は添付できません')
-      elsi
+      errors.add(:image, I18n.t('activerecord.errors.messages.task.image.different_type', locale: :ja))
     end
   end
 end
