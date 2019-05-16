@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'ユーザー管理機能', type: :system do
 
   let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com', admin: true) }
+  let!(:user_c) { FactoryBot.create(:user, name: 'ユーザーC', email: 'c@example.com') }
 
   before do
     # ログインする
@@ -13,6 +14,9 @@ describe 'ユーザー管理機能', type: :system do
   end
 
   describe '新規作成機能' do
+    let(:user_b_email) { 'b@example.com' }
+    let(:user_b_password) { 'password' }
+    let(:user_b_password_confirmation) { 'password' }
 
     before do
       visit new_admin_user_path
@@ -25,13 +29,20 @@ describe 'ユーザー管理機能', type: :system do
 
     context '新規ユーザー作成でユーザーを作成したとき' do
       let(:user_b_name) { 'ユーザーB' }
-      let(:user_b_email) { 'b@example.com' }
-      let(:user_b_password) { 'password' }
-      let(:user_b_password_confirmation) { 'password' }
 
       it '正常に登録される' do
         # 特定のメッセージが画面に表示しているかを確認
         expect(page).to have_selector '.alert-success', text: 'ユーザーB'
+      end
+    end
+
+    context '新規ユーザー作成でユーザーを作成したとき' do
+      let(:user_b_name) { '' }
+
+      it 'エラーとなる' do
+        within '#error_explanation' do
+          expect(page).to have_content '名前を入力してください'
+        end
       end
     end
   end
