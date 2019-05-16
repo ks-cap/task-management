@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   def index
     # ログインしているユーザーに紐づくTaskだけを表示
     @q = current_user.tasks.ransack(params[:q])
-    @tasks = @q.result(distinct: true)
+    @tasks = @q.result(distinct: true).page(params[:page])
   end
 
   def show
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:name, :description, :deadline)
+    params.require(:task).permit(:name, :description, :deadline, :state, :image)
   end
 
   def set_task

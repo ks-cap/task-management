@@ -7,6 +7,12 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+        task:
+          name:
+            comma: "にカンマを含めることはできません"
+          image:
+            no_file: "ファイルが存在しません"
+            different_type: "はJPEGとPNG以外添付できません"
     models:
       task: タスク
     attributes:
@@ -15,6 +21,8 @@ ja:
         name: 名称
         description: 詳しい説明
         deadline: 終了期限
+        state: 状態
+        image: 画像
         created_at: 登録日時
         updated_at: 更新日時
       user:
