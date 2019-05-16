@@ -13,8 +13,8 @@
     = f.text_area :description, rows: 5, class: 'form-control', id: 'task_description'
   .form-group
     = f.label :deadline
-    = f.datetime_select :deadline, {}, class: 'form-control date-picker', id: 'task_deadline'
+    = f.date_select :deadline, {}, class: 'col-sm-2 form-control date-picker', id: 'task_deadline'
   .form-group
     = f.label :state
-    = f.select :state, Task.states.keys.to_a, {}
+    = f.select :state, Task.states.keys.to_a, {include_blank: true}, class: 'form-control', id: 'task_state'
   = f.submit nil, class: 'btn btn-primary'
