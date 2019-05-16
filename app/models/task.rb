@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 30 }
-  validates :state, presence: true
+  validates :description, length: { maximum: 100 }
 
   validate :validate_name_not_including_comma
   validate :image_type
@@ -31,10 +31,11 @@ class Task < ApplicationRecord
   end
 
   def image_type
-    if !image.attached?
-      errors.add(:image, I18n.t('activerecord.errors.messages.task.image.no_file', locale: :ja))
-    elsif !image.content_type.in?(%("image/jpeg image/png"))
-      errors.add(:image, I18n.t('activerecord.errors.messages.task.image.different_type', locale: :ja))
+    if image.attached?
+     # errors.add(:image, I18n.t('activerecord.errors.messages.task.image.no_file', locale: :ja))
+      if !image.content_type.in?(%("image/jpeg image/png"))
+        errors.add(:image, I18n.t('activerecord.errors.messages.task.image.different_type', locale: :ja))
+      end
     end
   end
 end

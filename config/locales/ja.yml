@@ -9,7 +9,10 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
         task:
           name:
+            over_word_count: "の文字数が上限に達しています（30文字以内）"
             comma: "にカンマを含めることはできません"
+          description:
+            over_word_count: "の文字数が上限に達しています（100文字以内）"
           image:
             no_file: "ファイルが存在しません"
             different_type: "はJPEGとPNG以外添付できません"
