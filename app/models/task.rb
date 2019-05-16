@@ -10,6 +10,8 @@ class Task < ApplicationRecord
 
   scope :recent, -> { order(created_at: :desc) }
 
+  has_one_attached :image
+
   enum state: { 未着手: '未着手', '着手中': '着手中', 完了: '完了' }
 
   # ransack使用時の制約追加
