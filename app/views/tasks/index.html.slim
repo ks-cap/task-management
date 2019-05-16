@@ -9,13 +9,19 @@ h1 タスク一覧
     .col-sm-10
       = f.search_field :name_cont, class: 'form-control'
   .form-group.row
-    = f.label :created_at_gteq, '登録日時', class: 'col-sm-2 col-form-label'
+    = f.label :created_at, '登録日時', class: 'col-sm-2 col-form-label'
     .col-sm-10
-      = f.datetime_select :created_at_gteq, class: 'form-control'
+      = f.date_select :created_at_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
+      |
+        〜
+      = f.date_select :created_at_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
   .form-group.row
-    = f.label :deadline_cont, '終了期限', class: 'col-sm-2 col-form-label'
+    = f.label :deadline, '終了期限', class: 'col-sm-2 col-form-label'
     .col-sm-10
-      = f.datetime_select :deadline_gteq, class: 'form-control'
+      = f.date_select :deadline_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
+      |
+        〜
+      = f.date_select :deadline_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
   .form-group.row
     = f.label :state_eq, '状態', class: 'col-sm-2 col-form-label'
     .col-sm-10
