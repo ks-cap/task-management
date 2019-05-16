@@ -54,11 +54,12 @@ describe 'タスク管理機能', type: :system do
 
   describe '新規作成機能' do
     let(:login_user) { user_a }
+    let(:task_description) { '' }
 
     before do
       visit new_task_path
       fill_in '名称', with: task_name
-      #fill_in '詳しい説明', with: task_description
+      fill_in '詳しい説明', with: task_description
       click_button '登録する'
     end
 
@@ -89,6 +90,18 @@ describe 'タスク管理機能', type: :system do
         # within: 探索する範囲を画面内の特定の範囲に狭める
         within '#error_explanation' do
           expect(page).to have_content '名称は30文字以内で入力してください'
+        end
+      end
+    end
+
+    context '新規作成画面で詳しい説明が指定文字列を超えたとき' do
+      let(:task_name) { '最後のタスク' }
+      let(:task_description) { (0...150).map{ (65 + rand(26)).chr }.join }
+
+      it 'エラーとなる' do
+        # within: 探索する範囲を画面内の特定の範囲に狭める
+        within '#error_explanation' do
+          expect(page).to have_content '詳しい説明は100文字以内で入力してください'
         end
       end
     end
