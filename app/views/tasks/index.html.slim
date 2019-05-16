@@ -25,7 +25,7 @@ h1 タスク一覧
   .form-group.row
     = f.label :state_eq, '状態', class: 'col-sm-2 col-form-label'
     .col-sm-10
-      = f.select :state_eq, Task.states.keys.to_a, {}
+      = f.select :state_eq, Task.states.keys.to_a, {include_blank: true}
   .form-group
     = f.submit class: 'btn btn-outline-primary'
     = link_to '検索条件のクリア', tasks_path, class: 'btn btn-outline-primary'
