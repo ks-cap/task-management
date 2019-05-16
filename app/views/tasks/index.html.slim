@@ -5,29 +5,52 @@ h1 タスク一覧
 / _gteq: 入力した日時と同じか、それより未来の日時
 = search_form_for @q, class: 'mb-5' do |f|
   .form-group.row
-    = f.label :name_cont, '名称', class: 'col-sm-2 col-form-label'
+    = f.label :name_cont, Task.human_attribute_name(:name), class: 'col-sm-2 col-form-label'
     .col-sm-10
-      = f.search_field :name_cont, class: 'form-control'
+      = f.search_field :name_cont, class: 'form-control', placeholder: 'タスク名を入力してください'
   .form-group.row
-    = f.label :created_at_gteq, '登録日時', class: 'col-sm-2 col-form-label'
+    = f.label :created_at, Task.human_attribute_name(:created_at), class: 'col-sm-2 col-form-label'
     .col-sm-10
-      = f.search_field :created_at_gteq, class: 'form-control'
+      = f.date_select :created_at_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
+      |
+        〜
+      = f.date_select :created_at_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
+  .form-group.row
+    = f.label :deadline, Task.human_attribute_name(:deadline), class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.date_select :deadline_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
+      |
+        〜
+      = f.date_select :deadline_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
+  .form-group.row
+    = f.label :state_eq, Task.human_attribute_name(:state), class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.select :state_eq, Task.states.keys.to_a, {include_blank: true}
   .form-group
     = f.submit class: 'btn btn-outline-primary'
+    = link_to '検索条件のクリア', tasks_path, class: 'btn btn-outline-primary'
 = link_to '新規登録', new_task_path, class: 'btn btn-primary'
 
+
 .mb-3
+  = paginate @tasks
+  = page_entries_info @tasks
+
 table.table.table-hover
   thead.thead-default
     tr
       th= sort_link(@q, :name)
       th= sort_link(@q, :created_at)
+      th= sort_link(@q, :deadline)
+      th= sort_link(@q, :state)
       th
   tboby
     - @tasks.each do |task|
-      tr
+      tr id="task-#{task.id}"
         td= link_to task.name, task_path(task)
         td= task.created_at
+        td= task.deadline
+        td= task.state
         td
           = link_to '編集', edit_task_path(task), class: 'btn btn-primary mr-3'
-          = link_to '削除', task, method: :delete, data: { confirm: "タスク「#{task.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+          = link_to '削除', task, method: :delete, remote: true, data: { confirm: "タスク「#{task.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger delete'

@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   def index
     # ログインしているユーザーに紐づくTaskだけを表示
     @q = current_user.tasks.ransack(params[:q])
-    @tasks = @q.result(distinct: true)
+    @tasks = @q.result(distinct: true).page(params[:page])
   end
 
   def show
@@ -38,12 +38,11 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to tasks_url, notice: "タスク「#{@task.name}」を削除しました。"
   end
 
   private
   def task_params
-    params.require(:task).permit(:name, :description)
+    params.require(:task).permit(:name, :description, :deadline, :state, :image)
   end
 
   def set_task
