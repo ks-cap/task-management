@@ -5,25 +5,25 @@ h1 タスク一覧
 / _gteq: 入力した日時と同じか、それより未来の日時
 = search_form_for @q, class: 'mb-5' do |f|
   .form-group.row
-    = f.label :name_cont, '名称', class: 'col-sm-2 col-form-label'
+    = f.label :name_cont, Task.human_attribute_name(:name), class: 'col-sm-2 col-form-label'
     .col-sm-10
       = f.search_field :name_cont, class: 'form-control', placeholder: 'タスク名を入力してください'
   .form-group.row
-    = f.label :created_at, '登録日時', class: 'col-sm-2 col-form-label'
+    = f.label :created_at, Task.human_attribute_name(:created_at), class: 'col-sm-2 col-form-label'
     .col-sm-10
       = f.date_select :created_at_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
       |
         〜
       = f.date_select :created_at_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
   .form-group.row
-    = f.label :deadline, '終了期限', class: 'col-sm-2 col-form-label'
+    = f.label :deadline, Task.human_attribute_name(:deadline), class: 'col-sm-2 col-form-label'
     .col-sm-10
       = f.date_select :deadline_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
       |
         〜
       = f.date_select :deadline_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
   .form-group.row
-    = f.label :state_eq, '状態', class: 'col-sm-2 col-form-label'
+    = f.label :state_eq, Task.human_attribute_name(:state), class: 'col-sm-2 col-form-label'
     .col-sm-10
       = f.select :state_eq, Task.states.keys.to_a, {include_blank: true}
   .form-group

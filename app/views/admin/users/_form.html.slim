@@ -5,19 +5,19 @@
 
 = form_with model: [:admin, user], local: true do |f|
   .form-group
-    = f.label :name, '名前'
+    = f.label :name, User.human_attribute_name(:name)
     = f.text_field :name, class: 'form-control'
   .form-group
-    = f.label :email, 'メールアドレス'
+    = f.label :email, User.human_attribute_name(:email)
     = f.text_field :email, class: 'form-control'
   .form-check
     = f.label :admin, class: 'form-check-label' do
       = f.check_box :admin, class: 'form-check-input'
-      | 管理者権限
+      | #{User.human_attribute_name(:admin)}
   .form-group
-    = f.label :password, 'パスワード'
+    = f.label :password, User.human_attribute_name(:password)
     = f.password_field :password, class: 'form-control'
   .form-group
-    = f.label :password_confirmation, 'パスワード（確認）'
+    = f.label :password_confirmation, User.human_attribute_name(:password_confirmation)
     = f.password_field :password_confirmation, class: 'form-control'
-  = f.submit '登録する', class: 'btn btn-primary'
+  = f.submit nil, class: 'btn btn-primary'
