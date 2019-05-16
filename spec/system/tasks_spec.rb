@@ -83,6 +83,17 @@ describe 'タスク管理機能', type: :system do
       end
     end
 
+    context '新規作成画面で名称をコンマが入力されたとき' do
+      let(:task_name) { '次の、タスク' }
+
+      it 'エラーとなる' do
+        # within: 探索する範囲を画面内の特定の範囲に狭める
+        within '#error_explanation' do
+          expect(page).to have_content '名称にカンマを含めることはできません'
+        end
+      end
+    end
+
     context '新規作成画面で名称が指定文字列を超えたとき' do
       let(:task_name) { (0...50).map{ (65 + rand(26)).chr }.join }
 
