@@ -17,4 +17,7 @@
   .form-group
     = f.label :state
     = f.select :state, Task.states.keys.to_a, {include_blank: true}, class: 'form-control', id: 'task_state'
+  .form-group
+    = f.label :image
+    = f.file_field :image, class: 'form-control'
   = f.submit nil, class: 'btn btn-primary'
