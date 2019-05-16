@@ -45,5 +45,17 @@ describe 'ユーザー管理機能', type: :system do
         end
       end
     end
+
+    context '新規ユーザー作成でユーザーを作成したとき' do
+      let(:user_b_name) { 'ユーザーB' }
+      let(:user_b_email) { 'c@example.com' }
+
+      it 'エラーとなる' do
+        within '#error_explanation' do
+          expect(page).to have_content 'メールアドレスはすでに存在します'
+        end
+      end
+    end
+
   end
 end
