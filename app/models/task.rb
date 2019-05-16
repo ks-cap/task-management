@@ -4,6 +4,7 @@ class Task < ApplicationRecord
   validates :state, presence: true
 
   validate :validate_name_not_including_comma
+  validate :image_type
 
   # UserとTaskは１対多の関係
   belongs_to :user
@@ -23,9 +24,18 @@ class Task < ApplicationRecord
     []
   end
 
-  private
 
+  private
   def validate_name_not_including_comma
     errors.add(:name, 'にカンマを含めることはできません') if name&.include?(',')
+  end
+
+  def image_type
+    if !image.attached?
+      errors.add(:image, 'ファイルが存在しません')
+    elsif !image.content_type.in?(%("image/jpeg image/png"))
+      errors.add(:image, 'JPEGとPNG以外の画像は添付できません')
+      elsi
+    end
   end
 end
