@@ -35,7 +35,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    if User.where(admin: true).count > 1
+      @user.destroy
+    else
+      redirect_to admin_users_url, notice: "管理者が一人のため「#{@user.name}」を削除できません"
+    end
   end
 
   private
