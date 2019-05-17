@@ -79,3 +79,6 @@ gem 'ransack'
 
 # Pagination
 gem 'kaminari'
+
+# Make JavaScript's date and time etc easy to handle
+gem 'momentjs-rails'
