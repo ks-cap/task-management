@@ -69,6 +69,7 @@ gem 'html2slim'
 
 # Using bootstrap
 gem 'bootstrap'
+gem "bootstrap4-datetime-picker-rails"
 
 # Link URL
 gem 'rails_autolink'
