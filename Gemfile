@@ -84,4 +84,4 @@ gem 'kaminari'
 gem 'momentjs-rails'
 
 # Tempus Dominus uses the font-awesome icon
-gem 'font-awesome-rails'
+gem "font-awesome-rails"
