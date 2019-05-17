@@ -25,7 +25,7 @@ class Task < ApplicationRecord
   end
 
   def self.csv_attributes
-    ["name", "description", "deadline", "state", "created_at", "updated_at"]
+    ["user_id", "name", "description", "deadline", "state", "created_at", "updated_at"]
   end
 
   def self.generate_csv

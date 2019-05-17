@@ -46,8 +46,12 @@ class TasksController < ApplicationController
   end
 
   def import
-    current_user.tasks.import(params[:file])
-    redirect_to tasks_url, notice: "タスクを追加しました"
+    if params.has_key?(:file)
+      current_user.tasks.import(params[:file])
+      redirect_to tasks_url, notice: "タスクを追加しました"
+    else
+      redirect_to tasks_url, notice: "追加するファイルが存在しません"
+    end
   end
 
   private

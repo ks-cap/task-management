@@ -31,13 +31,13 @@ h1 タスク一覧
 
 .form-group.row
   .col-sm-10
-    = link_to '新規登録', new_task_path, class: 'btn btn-primary'
+    = link_to '新規登録', new_task_path, class: 'btn btn-outline-primary'
   .col-sm-10
     = link_to 'エクスポート', tasks_path(format: :csv), class: 'btn btn-outline-primary'
   .col-sm-10
     = form_tag import_tasks_path, multipart: true, class: 'mb-3' do
       = file_field_tag :file
-      = submit_tag "インポート", class: 'btn btn-primary'
+      = submit_tag "インポート", class: 'btn btn-outline-primary'
 
 .mb-3
   = paginate @tasks
