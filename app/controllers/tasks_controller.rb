@@ -5,6 +5,11 @@ class TasksController < ApplicationController
     # ログインしているユーザーに紐づくTaskだけを表示
     @q = current_user.tasks.ransack(params[:q])
     @tasks = @q.result(distinct: true).page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @tasks.generate_csv, filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv"}
+    end
   end
 
   def show
@@ -38,6 +43,15 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
+  end
+
+  def import
+    if params.has_key?(:file)
+      current_user.tasks.import(params[:file])
+      redirect_to tasks_url, notice: "タスクを追加しました"
+    else
+      redirect_to tasks_url, notice: "追加するファイルが存在しません"
+    end
   end
 
   private
