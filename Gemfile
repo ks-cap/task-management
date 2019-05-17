@@ -82,3 +82,6 @@ gem 'kaminari'
 
 # Make JavaScript's date and time etc easy to handle
 gem 'momentjs-rails'
+
+# Tempus Dominus uses the font-awesome icon
+gem 'font-awesome-rails'

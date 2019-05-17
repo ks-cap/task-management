@@ -628,6 +628,26 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="font-awesome-rails (vbundled(4.7.0.5)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="4" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/font-awesome-rails-4.7.0.5/app" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/font-awesome-rails-4.7.0.5/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/font-awesome-rails-4.7.0.5/test" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/font-awesome-rails-4.7.0.5/app" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/font-awesome-rails-4.7.0.5/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/font-awesome-rails-4.7.0.5/test" />
+        </SOURCES>
+        <excluded>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.6.0/gems/font-awesome-rails-4.7.0.5/test" />
+        </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="globalid (vbundled(0.4.2)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="4" />
