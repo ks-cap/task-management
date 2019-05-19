@@ -46,11 +46,16 @@ class TasksController < ApplicationController
   end
 
   def import
-    if params.has_key?(:file)
+    begin
       current_user.tasks.import(params[:file])
-      redirect_to tasks_url, notice: "タスクを追加しました"
-    else
-      redirect_to tasks_url, notice: "追加するファイルが存在しません"
+      flash[:notice] = "タスクを追加しました"
+    #rescue Tasks::MissingFileContentsError
+      #flash[:error] = 'CSVによるタスク一括登録に失敗しました(ファイルを指定して下さい。)'
+    rescue StandardError => e
+      flash[:danger] = 'CSVによるページ一括登録に失敗しました。'
+      Rails.logger.error("There are errors in the uploaded file #{e.message}")
+    ensure
+      redirect_to tasks_url
     end
   end
 
