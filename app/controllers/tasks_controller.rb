@@ -48,11 +48,20 @@ class TasksController < ApplicationController
   end
 
   def import
+    #if params.has_key?(:file)
+     # current_user.tasks.import(params[:file])
+      #flash[:success] = 'タスクを追加しました'
+    #else
+     # flash[:danger] = 'CSVによるタスク一括登録に失敗しました(ファイルを指定して下さい)'
+    #end
+    #redirect_to tasks_url
+
     begin
+      raise MissingFileContentsError if !params.has_key?(:file)
       current_user.tasks.import(params[:file])
       flash[:success] = 'タスクを追加しました'
-    #rescue Tasks::MissingFileContentsError
-      #flash[:error] = 'CSVによるタスク一括登録に失敗しました(ファイルを指定して下さい。)'
+    rescue MissingFileContentsError
+      flash[:danger] = 'CSVによるタスク一括登録に失敗しました(ファイルを指定して下さい)'
     rescue StandardError => e
       flash[:danger] = 'CSVによるページ一括登録に失敗しました。'
       Rails.logger.error("There are errors in the uploaded file #{e.message}")
@@ -69,4 +78,7 @@ class TasksController < ApplicationController
   def set_task
     @task = current_user.tasks.find(params[:id])
   end
+end
+
+class MissingFileContentsError< StandardError
 end
