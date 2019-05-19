@@ -49,10 +49,10 @@ class TasksController < ApplicationController
 
   def import
     begin
-      raise MissingFileContentsError if !params.has_key?(:file)
+      raise Exceptions::MissingFileContentsError if !params.has_key?(:file)
       current_user.tasks.import(params[:file])
       flash[:success] = 'タスクを追加しました'
-    rescue MissingFileContentsError
+    rescue Exceptions::MissingFileContentsError
       flash[:danger] = 'CSVによるタスク一括登録に失敗しました(ファイルを指定して下さい)'
     rescue StandardError => e
       flash[:danger] = 'CSVによるページ一括登録に失敗しました。'
@@ -70,7 +70,4 @@ class TasksController < ApplicationController
   def set_task
     @task = current_user.tasks.find(params[:id])
   end
-end
-
-class MissingFileContentsError< StandardError
 end
