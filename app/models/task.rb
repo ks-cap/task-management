@@ -52,11 +52,8 @@ class Task < ApplicationRecord
   end
 
   def image_type
-    if image.attached?
-     # errors.add(:image, I18n.t('activerecord.errors.messages.task.image.no_file', locale: :ja))
-      if !image.content_type.in?(%("image/jpeg image/png"))
+    if !image.content_type.in?(%("image/jpeg image/png"))
         errors.add(:image, I18n.t('activerecord.errors.messages.task.image.different_type', locale: :ja))
-      end
     end
   end
 end

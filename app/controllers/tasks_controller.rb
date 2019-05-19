@@ -48,14 +48,6 @@ class TasksController < ApplicationController
   end
 
   def import
-    #if params.has_key?(:file)
-     # current_user.tasks.import(params[:file])
-      #flash[:success] = 'タスクを追加しました'
-    #else
-     # flash[:danger] = 'CSVによるタスク一括登録に失敗しました(ファイルを指定して下さい)'
-    #end
-    #redirect_to tasks_url
-
     begin
       raise MissingFileContentsError if !params.has_key?(:file)
       current_user.tasks.import(params[:file])
