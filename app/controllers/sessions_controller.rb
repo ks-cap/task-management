@@ -15,7 +15,8 @@ class SessionsController < ApplicationController
     if user&.authenticate(session_params[:password])
       # セッションにuser_idを格納
       session[:user_id] = user.id
-      redirect_to root_path, notice: 'ログインしました。'
+      flash[:success] = 'ログインしました'
+      redirect_to root_path
     else
       render :new
     end
@@ -24,8 +25,8 @@ class SessionsController < ApplicationController
   def destroy
     # セッション内の情報を全て削除
     reset_session
-
-    redirect_to root_path, notice: 'ログアウトしました。'
+    flash[:danger] = 'ログアウトしました'
+    redirect_to root_path
   end
 
   private

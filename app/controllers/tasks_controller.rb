@@ -27,7 +27,8 @@ class TasksController < ApplicationController
     @task = current_user.tasks.new(task_params)
 
     if @task.save
-      redirect_to tasks_url, notice: "タスク「#{@task.name}」を登録しました．"
+      flash[:success] = "タスク「#{@task.name}」を登録しました"
+      redirect_to tasks_url
     else
       render :new
     end
@@ -35,7 +36,8 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to tasks_url, notice: "タスク「#{@task.name}」を更新しました。"
+      flash[:success] = "タスク「#{@task.name}」を更新しました"
+      redirect_to tasks_url
     else
       render :edit
     end
@@ -48,7 +50,7 @@ class TasksController < ApplicationController
   def import
     begin
       current_user.tasks.import(params[:file])
-      flash[:notice] = "タスクを追加しました"
+      flash[:success] = 'タスクを追加しました'
     #rescue Tasks::MissingFileContentsError
       #flash[:error] = 'CSVによるタスク一括登録に失敗しました(ファイルを指定して下さい。)'
     rescue StandardError => e
