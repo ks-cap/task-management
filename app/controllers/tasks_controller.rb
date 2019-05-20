@@ -25,7 +25,7 @@ class TasksController < ApplicationController
   def create
     # ログインしているユーザーのidをuser_idに入れた状態でTaskデータを登録
     @task = current_user.tasks.new(task_params)
-
+    @task.owner = current_user
     if @task.save
       flash[:success] = "タスク「#{@task.name}」を登録しました"
       redirect_to tasks_url

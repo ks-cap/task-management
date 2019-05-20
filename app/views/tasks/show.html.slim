@@ -26,6 +26,9 @@ table.table.table-hover
       th= Task.human_attribute_name(:state)
       td= @task.state
     tr
+      th= Task.human_attribute_name(:owner)
+      td= @task.owner.name
+    tr
       th= Task.human_attribute_name(:image)
       td= image_tag @task.image if @task.image.attached?
 

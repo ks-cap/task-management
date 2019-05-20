@@ -26,6 +26,7 @@ ja:
         deadline: 終了期限
         state: 状態
         image: 画像
+        owner: 作成者
         created_at: 登録日時
         updated_at: 更新日時
       user:
