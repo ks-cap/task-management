@@ -39,10 +39,16 @@ class Task < ApplicationRecord
   end
 
   def self.import(file)
+    logger.debug(file.inspect)
+
     CSV.foreach(file.path, headers: true) do |row|
-      task = new
+      task = Task.new
       task.attributes = row.to_hash.slice(*csv_attributes)
-      task.save!
+      begin
+        !task.save
+      rescue StandardError => e
+        Rails.logger.error("There are errors in the uploaded file is save #{e.message}")
+      end
     end
   end
 
@@ -52,8 +58,8 @@ class Task < ApplicationRecord
   end
 
   def image_type
-    if !image.content_type.in?(%("image/jpeg image/png"))
-        errors.add(:image, I18n.t('activerecord.errors.messages.task.image.different_type', locale: :ja))
+    if image.attached?
+      errors.add(:image, I18n.t('activerecord.errors.messages.task.image.different_type', locale: :ja)) unless image.content_type.in?(%("image/jpeg image/png"))
     end
   end
 end
