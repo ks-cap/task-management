@@ -58,22 +58,26 @@ describe 'ユーザー管理機能', type: :system do
     end
   end
 
+  # 機能していない
   describe 'ユーザー削除機能' do
 
     before do
       visit admin_users_path
-      click_button '削除'
+      click_button '新規登録'
     end
 
     context '管理者権限を持っている人がユーザーを削除しようとしたとき' do
 
       it '正常に削除される' do
-        expect(page).to have_selector '.alert-', text: '管理者が一人のため「ユーザーA」を削除できません'
+        expect(page).to have_selector '.alert-danger', text: '管理者が一人のため「ユーザーA」を削除できません'
       end
     end
 
     context '管理者権限を持っている人が1人しかいない状態で管理者を削除しようとしたとき' do
-
+      before do
+        page.first('削除').click
+        #click_button '削除', match: :first
+      end
       it 'エラーとなる' do
         expect(page).to have_selector '.alert-danger', text: '管理者が一人のため「ユーザーA」を削除できません'
       end
