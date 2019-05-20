@@ -14,4 +14,6 @@ class User < ApplicationRecord
   # UserとTaskは１対多の関係
   has_many :tasks
   has_many :owner_tasks, class_name: 'Task', foreign_key: :owner_id
+  has_one :user_group
+  has_one :group, through: :user_group
 end
