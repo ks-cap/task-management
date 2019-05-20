@@ -47,7 +47,7 @@ class Task < ApplicationRecord
       begin
         !task.save
       rescue StandardError => e
-        Rails.logger.error("There are errors in the uploaded file is save #{e.message}")
+        Rails.logger.error("Can not save the uploaded file #{e.message}")
       end
     end
   end
