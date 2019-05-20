@@ -37,11 +37,13 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    if User.where(admin: true).count > 1
-      @user.destroy
+    if User.where(admin: true).count == 1 && @user.admin
+      flash[:danger] = "管理者が一人のため「#{@user.name}」を削除できません"
     else
-      redirect_to admin_users_url, notice: "管理者が一人のため「#{@user.name}」を削除できません"
+      @user.destroy
+      flash[:danger] = "タスク「#{@user.name}」を削除しました"
     end
+    redirect_to admin_users_url
   end
 
   private
