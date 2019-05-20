@@ -68,4 +68,5 @@ describe 'ユーザー管理機能', type: :system do
       expect(page).to have_selector '.alert-success', text: '管理者が一人のため「ユーザーA」を削除できません'
     end
   end
+
 end
