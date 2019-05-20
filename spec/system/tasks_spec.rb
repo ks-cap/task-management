@@ -40,6 +40,22 @@ describe 'タスク管理機能', type: :system do
     end
   end
 
+  describe 'CSV形式のファイルをインポート・エクスポート' do
+
+    describe 'インポート機能' do
+      let(:login_user) { user_a }
+      context 'ファイルを選択せずにインポートボタンを押したとき' do
+        before do
+          click_button 'インポート'
+        end
+
+        it 'エラーとなる' do
+          expect(page).to have_selector '.alert-danger', text: 'CSVによるタスク一括登録に失敗しました(ファイルを指定して下さい)'
+        end
+      end
+    end
+  end
+
   describe '詳細表示機能' do
     context 'ユーザーAがログインしているとき' do
       let(:login_user) { user_a }

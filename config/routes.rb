@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  namespace :tasks do
+    resources :import_csvs, only: %i(index create)
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'tasks#index'
   resources :tasks do
