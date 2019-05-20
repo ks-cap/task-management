@@ -4,7 +4,7 @@ class Tasks::ImportCsvsController < ApplicationController
 
   def create
     begin
-      raise Exceptions::MissingFileContentsError if !params.has_key?(:file)
+      raise Exceptions::MissingFileContentsError unless params.has_key?(:file)
       current_user.tasks.import(params[:file])
       flash[:success] = 'タスクを追加しました'
     rescue Exceptions::MissingFileContentsError
