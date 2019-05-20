@@ -27,7 +27,7 @@ class Task < ApplicationRecord
   end
 
   def self.csv_attributes
-    %w[user_id name description deadline state created_at updated_at]
+    %w[user_id name description deadline state created_at updated_at owner_id]
   end
 
   def self.generate_csv
@@ -41,14 +41,13 @@ class Task < ApplicationRecord
   end
 
   def self.import(file)
-    logger.debug(file.inspect)
-
     CSV.foreach(file.path, headers: true) do |row|
       task = Task.new
       task.attributes = row.to_hash.slice(*csv_attributes)
       begin
-        !task.save
+        task.save!
       rescue StandardError => e
+        #errors.add("CSVによるページ一括登録に失敗しました(#{e.message})")
         Rails.logger.error("Can not save the uploaded file #{e.message}")
       end
     end

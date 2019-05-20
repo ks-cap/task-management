@@ -15,13 +15,13 @@ table.table.table-hover
       td= auto_link(simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div"))
     tr
       th= Task.human_attribute_name(:deadline)
-      td= @task.deadline
+      td= l(@task.deadline, format: :long)
     tr
       th= Task.human_attribute_name(:created_at)
-      td= @task.created_at
+      td= l(@task.created_at, format: :long)
     tr
       th= Task.human_attribute_name(:updated_at)
-      td= @task.updated_at
+      td= l(@task.updated_at, format: :long)
     tr
       th= Task.human_attribute_name(:state)
       td= @task.state

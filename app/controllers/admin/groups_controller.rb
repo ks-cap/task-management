@@ -17,7 +17,7 @@ class Admin::GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new)(group_params)
+    @group = Group.new(group_params)
     if @group.save
       flash[:notice] = "グループ「#{@group.name}」を作成しました"
       redirect_to admin_group_url(@group)

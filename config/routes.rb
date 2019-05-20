@@ -3,9 +3,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'tasks#index'
-  resources :tasks do
-    post :import, on: :collection
-  end
+  resources :tasks
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -13,7 +11,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
-    resource :groups
+    resources :groups
   end
 
   namespace :tasks do

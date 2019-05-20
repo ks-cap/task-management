@@ -1,2 +1,23 @@
-h1 Admin::Groups#index
-p Find me in app/views/admin/groups/index.html.slim
+.mb-3
+  table.table.table-hover
+    thead.thead-default
+      tr
+        th= Group.human_attribute_name(:id)
+        th= Group.human_attribute_name(:name)
+        th= Group.human_attribute_name(:updated_at)
+        th= Group.human_attribute_name(:created_at)
+        th
+    tbody
+      - @groups.each do |group|
+        tr
+          td= group.id
+          td= group.name
+          td= l(group.updated_at, format: :long)
+          td= l(group.created_at, format: :long)
+          td
+            = link_to '詳細', admin_group_path(group), class: 'btn btn-primary'
+            = link_to '編集', edit_admin_group_path(group), class: 'btn btn-primary'
+            = link_to '削除', admin_group_path(group), method: :delete, class: 'btn btn-danger'
+
+.mb-3
+  = paginate @groups
