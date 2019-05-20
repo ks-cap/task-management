@@ -1,5 +1,6 @@
-class Task < ApplicationRecord
+# frozen_string_literal: true
 
+class Task < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
   validates :description, length: { maximum: 100 }
 
@@ -16,16 +17,16 @@ class Task < ApplicationRecord
   enum state: { 未着手: '未着手', '着手中': '着手中', 完了: '完了' }
 
   # ransack使用時の制約追加
-  def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(_auth_object = nil)
     %w[name created_at deadline state]
   end
 
-  def self.ransackable_associations(auth_object = nil)
+  def self.ransackable_associations(_auth_object = nil)
     []
   end
 
   def self.csv_attributes
-    ["user_id", "name", "description", "deadline", "state", "created_at", "updated_at"]
+    %w[user_id name description deadline state created_at updated_at]
   end
 
   def self.generate_csv
@@ -33,7 +34,7 @@ class Task < ApplicationRecord
       csv << csv_attributes
       # allメソッドで全タスクを取得し１レコードごとにCSVの１行を出力するその際は属性ごとにTaskオブジェクトから属性値を取得しcsvに与えている。
       all.each do |task|
-        csv << csv_attributes.map{ |attr| task.send(attr) }
+        csv << csv_attributes.map { |attr| task.send(attr) }
       end
     end
   end
@@ -53,6 +54,7 @@ class Task < ApplicationRecord
   end
 
   private
+
   def validate_name_not_including_comma
     errors.add(:name, I18n.t('activerecord.errors.messages.task.name.comma', locale: :ja)) if name&.include?(',') || name&.include?('、')
   end

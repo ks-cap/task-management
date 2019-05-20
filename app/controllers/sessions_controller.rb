@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   # ログイン画面を表示するアクションに対しては、定義済みのフィルターを通らないようにする
   skip_before_action :login_required
 
-  def new
-  end
+  def new; end
 
   def create
     # 送られてきたメールアドレスでユーザを検索
@@ -30,6 +31,7 @@ class SessionsController < ApplicationController
   end
 
   private
+
   # リクエストパラメータとして送られてきた情報が想定通りであるかチェックし、受け付ける想定箇所だけを抜くとる
   def session_params
     params.require(:session).permit(:email, :password)

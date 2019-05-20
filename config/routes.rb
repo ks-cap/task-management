@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -8,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   namespace :tasks do
-    resources :import_csvs, only: %i(index create)
+    resources :import_csvs, only: %i[index create]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

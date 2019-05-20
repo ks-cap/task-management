@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'ユーザー管理機能', type: :system do
-
   let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com', admin: true) }
   let!(:user_c) { FactoryBot.create(:user, name: 'ユーザーC', email: 'c@example.com') }
 
@@ -60,14 +61,12 @@ describe 'ユーザー管理機能', type: :system do
 
   # 機能していない
   describe 'ユーザー削除機能' do
-
     before do
       visit admin_users_path
       click_button '新規登録'
     end
 
     context '管理者権限を持っている人がユーザーを削除しようとしたとき' do
-
       it '正常に削除される' do
         expect(page).to have_selector '.alert-danger', text: '管理者が一人のため「ユーザーA」を削除できません'
       end
@@ -76,12 +75,11 @@ describe 'ユーザー管理機能', type: :system do
     context '管理者権限を持っている人が1人しかいない状態で管理者を削除しようとしたとき' do
       before do
         page.first('削除').click
-        #click_button '削除', match: :first
+        # click_button '削除', match: :first
       end
       it 'エラーとなる' do
         expect(page).to have_selector '.alert-danger', text: '管理者が一人のため「ユーザーA」を削除できません'
       end
     end
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'タスク管理機能', type: :system do
@@ -26,14 +28,14 @@ describe 'タスク管理機能', type: :system do
     context 'ユーザーAがログインしているとき' do
       # before do で利用するlogin_userを定義する
       let(:login_user) { user_a }
-      
+
       it_behaves_like 'ユーザーAが作成したタスクが表示される'
     end
 
     context 'ユーザーBがログインしているとき' do
       let(:login_user) { user_b }
 
-        it 'ユーザーAが作成したタスクが表示されない' do
+      it 'ユーザーAが作成したタスクが表示されない' do
         # ユーザーAが作成したタスクの名称が画面上に表示されていないことを確認
         expect(page).to have_no_content '最初のタスク'
       end
@@ -41,7 +43,6 @@ describe 'タスク管理機能', type: :system do
   end
 
   describe 'CSV形式のファイルをインポート・エクスポート' do
-
     describe 'インポート機能' do
       let(:login_user) { user_a }
       context 'ファイルを選択せずにインポートボタンを押したとき' do
@@ -111,7 +112,7 @@ describe 'タスク管理機能', type: :system do
     end
 
     context '新規作成画面で名称が指定文字列を超えたとき' do
-      let(:task_name) { (0...50).map{ (65 + rand(26)).chr }.join }
+      let(:task_name) { (0...50).map { rand(65..90).chr }.join }
 
       it 'エラーとなる' do
         # within: 探索する範囲を画面内の特定の範囲に狭める
@@ -123,7 +124,7 @@ describe 'タスク管理機能', type: :system do
 
     context '新規作成画面で詳しい説明が指定文字列を超えたとき' do
       let(:task_name) { '最後のタスク' }
-      let(:task_description) { (0...150).map{ (65 + rand(26)).chr }.join }
+      let(:task_description) { (0...150).map { rand(65..90).chr }.join }
 
       it 'エラーとなる' do
         # within: 探索する範囲を画面内の特定の範囲に狭める
@@ -132,7 +133,5 @@ describe 'タスク管理機能', type: :system do
         end
       end
     end
-
   end
 end
-
