@@ -18,6 +18,8 @@ ja:
             different_type: "はJPEGとPNG以外添付できません"
     models:
       task: タスク
+      user: ユーザー
+      group: グループ
     attributes:
       task:
         id: ID
@@ -35,6 +37,10 @@ ja:
         admin: 管理者権限
         password: パスワード
         password_confirmation: パスワード（確認）
+        created_at: 登録日時
+        updated_at: 更新日時
+      group:
+        name: 名前
         created_at: 登録日時
         updated_at: 更新日時
   date:
