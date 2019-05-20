@@ -9,6 +9,7 @@ class Task < ApplicationRecord
 
   # UserとTaskは１対多の関係
   belongs_to :user
+  belongs_to :owner, class_name: 'User'
 
   scope :recent, -> { order(created_at: :desc) }
 
