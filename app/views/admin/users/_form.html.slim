@@ -15,6 +15,9 @@
       = f.check_box :admin, class: 'form-check-input'
       | #{User.human_attribute_name(:admin)}
   .form-group
+    = f.label :group
+    = f.collection_select :group, Group.all, :id, :name, { prompt: '' }, { class: 'form-control' }
+  .form-group
     = f.label :password, User.human_attribute_name(:password)
     = f.password_field :password, class: 'form-control'
   .form-group
