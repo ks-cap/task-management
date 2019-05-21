@@ -1,2 +1,6 @@
-h1 Admin::Groups#edit
-p Find me in app/views/admin/groups/edit.html.slim
+h1 グループ編集
+
+.nav.justify-content-end
+  = link_to '一覧', admin_groups_path, class: 'nav-link'
+
+= render partial: 'form', locals: { group: @group }

@@ -1,2 +1,6 @@
-h1 Admin::Groups#new
-p Find me in app/views/admin/groups/new.html.slim
+h1 グループ新規作成
+
+.nav.justify-content-end
+  = link_to '一覧', admin_groups_path, class: 'nav-link'
+
+= render partial: 'form', locals: { group: @group }

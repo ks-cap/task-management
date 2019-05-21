@@ -1,2 +1,22 @@
-h1 Admin::Groups#show
-p Find me in app/views/admin/groups/show.html.slim
+h1 グループの詳細
+
+.nav.justify-content-end
+  = link_to '一覧', admin_groups_path, class: 'nav-link'
+
+.mb-3
+  .card
+    .card.body
+      table.table.table-hover
+        tbody
+          tr id="group-#{@group.id}"
+            th= Group.human_attribute_name(:name)
+            td= @group.name
+          tr
+            th= Group.human_attribute_name(:updated_at)
+            td= @group.updated_at
+          tr
+            th= Group.human_attribute_name(:created_at)
+            td= @group.created_at
+
+= link_to '編集', admin_group_path(@group), class: 'btn btn-primary mr-3'
+= link_to '削除', [:admin, @group], method: :delete, data: { confirm: "タスク「#{@group.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger delete'
