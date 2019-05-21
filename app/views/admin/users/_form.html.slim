@@ -6,10 +6,10 @@
 = form_with model: [:admin, user], local: true do |f|
   .form-group
     = f.label :name, User.human_attribute_name(:name)
-    = f.text_field :name, class: 'form-control'
+    = f.text_field :name, class: 'form-control', placeholder: '名前を入力してください'
   .form-group
     = f.label :email, User.human_attribute_name(:email)
-    = f.text_field :email, class: 'form-control'
+    = f.text_field :email, class: 'form-control', placeholder: 'メールアドレスを入力してください'
   .form-check
     = f.label :admin, class: 'form-check-label' do
       = f.check_box :admin, class: 'form-check-input'
@@ -19,8 +19,8 @@
     = f.collection_select :group, Group.all, :id, :name, { prompt: '' }, { class: 'form-control' }
   .form-group
     = f.label :password, User.human_attribute_name(:password)
-    = f.password_field :password, class: 'form-control'
+    = f.password_field :password, class: 'form-control', placeholder: 'パスワードを入力してください'
   .form-group
     = f.label :password_confirmation, User.human_attribute_name(:password_confirmation)
-    = f.password_field :password_confirmation, class: 'form-control'
+    = f.password_field :password_confirmation, class: 'form-control', placeholder: '再度パスワードを入力してください'
   = f.submit nil, class: 'btn btn-primary'

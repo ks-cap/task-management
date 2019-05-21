@@ -7,16 +7,16 @@
 = form_with model: task, local: true do |f|
   .form-group
     = f.label :name
-    = f.text_field :name, class: 'form-control', id: 'task_name'
+    = f.text_field :name, class: 'form-control', id: 'task_name', placeholder: 'タスク名を入力してください'
   .form-group
     = f.label :description
-    = f.text_area :description, rows: 5, class: 'form-control', id: 'task_description'
+    = f.text_area :description, rows: 5, class: 'form-control', id: 'task_description', placeholder: '詳しい説明を入力してください'
   .form-group
     = f.label :deadline
-    = f.date_select :deadline, {}, class: 'col-sm-2 form-control date-picker', id: 'task_deadline'
+    = f.date_select :deadline, {}, class: 'col-sm-2 form-control date-picker', id: 'task_deadline', placeholder: 'タスク名を入力してください'
   .form-group
     = f.label :state
-    = f.select :state, Task.states.keys.to_a, {include_blank: true}, class: 'form-control', id: 'task_state'
+    = f.select :state, Task.states.keys.to_a, {include_blank: true}, class: 'form-control', id: 'task_state', placeholder: 'タスク名を入力してください'
   .form-group
     = f.label :image
     = f.file_field :image, class: 'form-control'
