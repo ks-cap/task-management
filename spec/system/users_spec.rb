@@ -5,7 +5,7 @@ require 'rails_helper'
 describe 'ユーザー管理機能', type: :system do
   let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com', admin: true) }
   let!(:user_c) { FactoryBot.create(:user, name: 'ユーザーC', email: 'c@example.com') }
-
+  let(:group) { FactoryBot.create(:group) }
   before do
     # ログインする
     visit login_path
@@ -21,10 +21,11 @@ describe 'ユーザー管理機能', type: :system do
 
     before do
       visit new_admin_user_path
-      fill_in '名前', with: user_b_name
-      fill_in 'メールアドレス', with: user_b_email
-      fill_in 'パスワード', with: user_b_password
-      fill_in 'パスワード（確認）', with: user_b_password_confirmation
+      fill_in User.human_attribute_name(:name), with: user_b_name
+      fill_in User.human_attribute_name(:email), with: user_b_email
+      select group.name, from: User.human_attribute_name(:group)
+      fill_in User.human_attribute_name(:password), with: user_b_password
+      fill_in User.human_attribute_name(:password_confirmation), with: user_b_password_confirmation
       click_button '登録する'
     end
 

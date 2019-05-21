@@ -8,6 +8,7 @@ class Task < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 30 }
   validates :description, length: { maximum: 100 }
+  validates :state, presence: true
   validate :validate_name_not_including_comma
   validate :deadline_cannot_be_set_before_now, if: -> { deadline.present? }
   validate :image_type
@@ -59,7 +60,7 @@ class Task < ApplicationRecord
   end
 
   def deadline_cannot_be_set_before_now
-    error.add(:deadline, "は現在日付以降の日時を設定してください") if deadline < Time.current.beginning_of_day
+    errors.add(:deadline, "は現在日付以降の日時を設定してください") if deadline < Time.current.beginning_of_day
   end
 
   def image_type
