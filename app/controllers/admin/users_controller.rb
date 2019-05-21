@@ -3,9 +3,16 @@
 class Admin::UsersController < ApplicationController
   before_action :require_admin
   before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_group, only: %i[create update]
+  USER_DISPLAY_PER_PAGE = 10
 
   def index
     @users = User.all
+                 .includes(:group, :user_group)
+                 .order(:id)
+                 .page(params[:page])
+                 .per(USER_DISPLAY_PER_PAGE)
+
   end
 
   def show; end
@@ -18,8 +25,6 @@ class Admin::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.group = Group.find(params[:user][:group])
-
     if @user.save
       flash[:success] = "ユーザー「#{@user.name}」を登録しました"
       redirect_to admin_user_url(@user)
@@ -50,7 +55,8 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :admin, :password, :password_confirmation)
+    params.require(:user)
+        .permit(:name, :email, :group, :admin, :password, :password_confirmation)
   end
 
   def require_admin
@@ -59,5 +65,9 @@ class Admin::UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def set_group
+    @user.group = Group.find(params[:user][:group]) if params[:user][:group].present?
   end
 end

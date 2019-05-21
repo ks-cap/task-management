@@ -2,6 +2,7 @@ h1 ユーザーの詳細
 
 .nav.justify-content-end
   = link_to '一覧', admin_users_path, class: 'nav-link'
+
 table.table.table-hover
   tbody
     tr id="user-#{@user.id}"
@@ -13,6 +14,9 @@ table.table.table-hover
     tr
       th= User.human_attribute_name(:email)
       td= @user.email
+    tr
+      th= User.human_attribute_name(:group)
+      td= @user.group&.name
     tr
       th= User.human_attribute_name(:admin)
       td= @user.admin? ? 'あり' : 'なし'

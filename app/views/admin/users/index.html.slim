@@ -8,6 +8,7 @@ table.table.table-hover
     tr
       th= User.human_attribute_name(:name)
       th= User.human_attribute_name(:email)
+      th= User.human_attribute_name(:group)
       th= User.human_attribute_name(:admin)
       th= User.human_attribute_name(:created_at)
       th= User.human_attribute_name(:updated_at)
@@ -17,6 +18,7 @@ table.table.table-hover
       tr id="user-#{user.id}"
         td= link_to user.name, [:admin, user]
         td= user.email
+        td= user.group&.name
         td= user.admin? ? 'あり' : 'なし'
         td= l(user.created_at, format: :long)
         td= l(user.updated_at, format: :long)
