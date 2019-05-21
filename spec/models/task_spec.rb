@@ -49,4 +49,16 @@ describe Task, type: :model do
     end
   end
 
+  describe 'タスク検索機能' do
+    let!(:user) { FactoryBot.create(:user) }
+    let!(:task1) { FactoryBot.create(:task, name: 'タイトル_1', owner: user) }
+    let!(:task2) { FactoryBot.create(:task, name: 'タイトル_10', state: Task.states[:完了], owner: user) }
+    let!(:task3) { FactoryBot.create(:task, name: 'タイトル_2', owner: user) }
+    let!(:task4) { FactoryBot.create(:task, name: 'タイトル_11', owner: user) }
+
+    it '正しい検索結果が表示される' do
+      attr = { name: task1.name, state: task1.state }
+      expect(Task.search(attr).pluck(:name)).to match_array [task4.name, task1.name]
+    end
+  end
 end
