@@ -1,27 +1,25 @@
 h1 グループ一覧
 
 .mb-3
-  .card
-    .card.body
-      table.table.table-hover
-        thead.thead-default
-          tr
-            th= Group.human_attribute_name(:id)
-            th= Group.human_attribute_name(:name)
-            th= Group.human_attribute_name(:updated_at)
-            th= Group.human_attribute_name(:created_at)
-            th
-        tbody
-          - @groups.each do |group|
-            tr
-              td= group.id
-              td= link_to group.name, admin_group_path(group)
-              td= l(group.updated_at, format: :long)
-              td= l(group.created_at, format: :long)
-              td
-                = link_to '編集', edit_admin_group_path(group), class: 'btn btn-primary'
-                = link_to '削除', admin_group_path(group), method: :delete,
-                        data: { confirm: "ユーザー「#{group.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
+  table.table.table-hover
+    thead.thead-default
+      tr
+        th= Group.human_attribute_name(:id)
+        th= Group.human_attribute_name(:name)
+        th= Group.human_attribute_name(:updated_at)
+        th= Group.human_attribute_name(:created_at)
+        th
+    tbody
+      - @groups.each do |group|
+        tr
+          td= group.id
+          td= link_to group.name, [:admin, group]
+          td= l(group.updated_at, format: :long)
+          td= l(group.created_at, format: :long)
+          td
+            = link_to '編集', edit_admin_group_path(group), class: 'btn btn-primary'
+            = link_to '削除', admin_group_path(group), method: :delete,
+                    data: { confirm: "ユーザー「#{group.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
 
 = link_to '新規作成', new_admin_group_path, class: 'btn btn-success'
 

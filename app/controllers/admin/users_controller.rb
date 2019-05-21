@@ -8,11 +8,10 @@ class Admin::UsersController < ApplicationController
 
   def index
     @users = User.all
-                 .includes(:group, :user_group)
+                 .includes!(:group, :user_group)
                  .order(:id)
                  .page(params[:page])
                  .per(USER_DISPLAY_PER_PAGE)
-
   end
 
   def show; end

@@ -4,19 +4,17 @@ h1 グループの詳細
   = link_to '一覧', admin_groups_path, class: 'nav-link'
 
 .mb-3
-  .card
-    .card.body
-      table.table.table-hover
-        tbody
-          tr id="group-#{@group.id}"
-            th= Group.human_attribute_name(:name)
-            td= @group.name
-          tr
-            th= Group.human_attribute_name(:updated_at)
-            td= @group.updated_at
-          tr
-            th= Group.human_attribute_name(:created_at)
-            td= @group.created_at
+  table.table.table-hover
+    tbody
+      tr id="group-#{@group.id}"
+        th= Group.human_attribute_name(:name)
+        td= @group.name
+      tr
+        th= Group.human_attribute_name(:updated_at)
+        td= l(@group.updated_at, format: :long)
+      tr
+        th= Group.human_attribute_name(:created_at)
+        td= l(@group.created_at, format: :long)
 
 = render partial: 'user_list', locals: { group: @group } if @group.users.present?
 = link_to '編集', admin_group_path(@group), class: 'btn btn-primary mr-3'
