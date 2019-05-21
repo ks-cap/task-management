@@ -3,9 +3,10 @@
 require 'rails_helper'
 
 describe 'ユーザー管理機能', type: :system do
-  let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com', admin: true) }
-  let!(:user_c) { FactoryBot.create(:user, name: 'ユーザーC', email: 'c@example.com') }
+  let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com', admin: true, group: group) }
+  let!(:user_c) { FactoryBot.create(:user, name: 'ユーザーC', email: 'c@example.com', group: group) }
   let(:group) { FactoryBot.create(:group) }
+
   before do
     # ログインする
     visit login_path
