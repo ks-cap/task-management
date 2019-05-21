@@ -13,22 +13,22 @@ describe Task, type: :model do
     end
 
     context 'エラーとなる場合' do
-      it 'タイトルが未設定と表示される' do
+      it 'タイトルが未設定である' do
         task.name = nil
         is_expected.to eq false
       end
 
-      it 'ステータスが未設定と表示される' do
+      it 'ステータスが未設定である' do
         task.state = nil
         is_expected.to eq false
       end
 
-      it '終了期日が過去日と表示される' do
+      it '終了期日が過去日である' do
         task.deadline = Time.current.ago(1.day)
         is_expected.to eq false
       end
 
-      it '作成者が未設定と表示される' do
+      it '作成者が未設定である' do
         task.owner = nil
         is_expected.to eq false
       end
