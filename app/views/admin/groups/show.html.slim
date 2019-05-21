@@ -18,5 +18,7 @@ h1 グループの詳細
             th= Group.human_attribute_name(:created_at)
             td= @group.created_at
 
+= render partial: 'user_list', locals: { group: @group } if @group.users.present?
 = link_to '編集', admin_group_path(@group), class: 'btn btn-primary mr-3'
-= link_to '削除', [:admin, @group], method: :delete, data: { confirm: "タスク「#{@group.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger delete'
+= link_to '削除', [:admin, @group], method: :delete,
+        data: { confirm: "タスク「#{@group.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger delete'

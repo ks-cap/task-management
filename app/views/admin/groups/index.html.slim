@@ -20,7 +20,8 @@ h1 グループ一覧
               td= l(group.created_at, format: :long)
               td
                 = link_to '編集', edit_admin_group_path(group), class: 'btn btn-primary'
-                = link_to '削除', admin_group_path(group), method: :delete, class: 'btn btn-danger'
+                = link_to '削除', admin_group_path(group), method: :delete,
+                        data: { confirm: "ユーザー「#{group.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
 
 = link_to '新規作成', new_admin_group_path, class: 'btn btn-success'
 

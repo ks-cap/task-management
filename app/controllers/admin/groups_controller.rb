@@ -1,5 +1,6 @@
 class Admin::GroupsController < ApplicationController
-  before_action :set_group, only: %i[show edit update destroy]
+  before_action :set_group, only: %i[edit update destroy]
+
   GROUP_DISPLAY_PER_PAGE = 10
 
   def index
@@ -7,6 +8,7 @@ class Admin::GroupsController < ApplicationController
   end
 
   def show
+    @group = Group.includes(:users).find(params[:id])
   end
 
   def new
