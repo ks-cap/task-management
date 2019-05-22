@@ -71,6 +71,8 @@ class Admin::UsersController < ApplicationController
   def prepare_group
     if params[:user][:group].present?
       @user.group = Group.find(params[:user][:group])
+    else
+      @user.user_group&.destroy
     end
   end
 
