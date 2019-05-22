@@ -53,6 +53,14 @@ class Task < ApplicationRecord
     end
   end
 
+  def editable?(target_user)
+    if target_user.group.present?
+      user.group == target_user.group
+    else
+      user == target_user
+    end
+  end
+
   private
 
   def validate_name_not_including_comma

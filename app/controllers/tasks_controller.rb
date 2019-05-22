@@ -70,4 +70,11 @@ class TasksController < ApplicationController
   def set_task
     @task = current_user.tasks.find(params[:id])
   end
+
+  def only_my_group_editable
+    unless Task.find(params[:id]).editable?(current_user)
+      flash[:danger] = "タスク「#{@task.name}」の操作権限がありません"
+      redirect_to tasks_url
+    end
+  end
 end
