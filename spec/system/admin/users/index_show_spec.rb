@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 RSpec.describe 'ユーザー一覧と詳細', type: :system do
   let(:user1) { FactoryBot.create(:user, name: 'test_user_1') }
@@ -17,6 +19,5 @@ RSpec.describe 'ユーザー一覧と詳細', type: :system do
     it '詳細が表示される' do
       expect(page).to have_content user1.name
     end
-
   end
 end

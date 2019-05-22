@@ -27,5 +27,3 @@ end
     FactoryBot.create(:task, owner: User.first)
   end
 end
-
-

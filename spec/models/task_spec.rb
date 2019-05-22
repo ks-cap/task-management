@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Task, type: :model do
@@ -37,7 +39,7 @@ describe Task, type: :model do
     context 'アソシエーション' do
       let!(:user) { FactoryBot.create(:user) }
       let!(:owner) { FactoryBot.create(:user) }
-      let(:task) { FactoryBot.build(:task, user: user, owner: owner)}
+      let(:task) { FactoryBot.build(:task, user: user, owner: owner) }
 
       it '紐付くユーザーが取得できる' do
         expect(task.user).to eq user

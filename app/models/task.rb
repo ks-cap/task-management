@@ -15,7 +15,7 @@ class Task < ApplicationRecord
   validate :image_type
 
   scope :recent, -> { order(created_at: :desc) }
-  scope :with_group, -> (group) { includes(user: :group).where(groups: { id: group&.id }) }
+  scope :with_group, ->(group) { includes(user: :group).where(groups: { id: group&.id }) }
 
   # ransack使用時の制約追加
   def self.ransackable_attributes(_auth_object = nil)
@@ -47,7 +47,7 @@ class Task < ApplicationRecord
       begin
         task.save!
       rescue StandardError => e
-        #errors.add("CSVによるページ一括登録に失敗しました(#{e.message})")
+        # errors.add("CSVによるページ一括登録に失敗しました(#{e.message})")
         Rails.logger.error("Can not save the uploaded file #{e.message}")
       end
     end
@@ -57,7 +57,7 @@ class Task < ApplicationRecord
     if target_user.admin?
       true
     elsif target_user.group.present?
-    user.group == target_user.group
+      user.group == target_user.group
     else
       user == target_user
     end
@@ -70,7 +70,7 @@ class Task < ApplicationRecord
   end
 
   def deadline_cannot_be_set_before_now
-    errors.add(:deadline, "は現在日付以降の日時を設定してください") if deadline < Time.current.beginning_of_day
+    errors.add(:deadline, 'は現在日付以降の日時を設定してください') if deadline < Time.current.beginning_of_day
   end
 
   def image_type

@@ -9,9 +9,9 @@ class User < ApplicationRecord
   has_one :user_group
   has_one :group, through: :user_group
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
   validates :name, presence: true, length: { maximum: 30 }
-  validates :email, presence: true, length: { maximum: 255 } ,uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-  validates :password, presence: true, confirmation: true, length: {minimum: 6 }
+  validates :email, presence: true, length: { maximum: 255 }, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+  validates :password, presence: true, confirmation: true, length: { minimum: 6 }
   validates :password_digest, presence: true
 end

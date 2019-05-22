@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe User, type: :model do
   describe 'TaskModelに関する処理' do
     let(:user) { FactoryBot.build(:user) }
-    subject{ user.valid? }
+    subject { user.valid? }
 
     context 'エラーとならない場合' do
       it '正常な値が設定される' do
@@ -70,6 +72,5 @@ describe User, type: :model do
         expect(user.group).to eq group
       end
     end
-
   end
 end

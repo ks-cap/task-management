@@ -17,5 +17,4 @@ Rails.application.routes.draw do
   namespace :tasks do
     resources :import_csvs, only: %i[index create]
   end
-
 end

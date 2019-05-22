@@ -69,7 +69,7 @@ describe 'ユーザー管理機能', type: :system do
 
     context '管理者権限を持っている人がユーザーを削除しようとしたとき' do
       before do
-        #page.first('削除').click
+        # page.first('削除').click
         click_button '削除'
       end
 
@@ -80,7 +80,7 @@ describe 'ユーザー管理機能', type: :system do
 
     context '管理者権限を持っている人が1人しかいない状態で管理者を削除しようとしたとき' do
       before do
-        #page.first('削除').click
+        # page.first('削除').click
         click_button '削除'
       end
       it 'エラーとなる' do

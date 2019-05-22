@@ -34,7 +34,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-   prepare_group
+    prepare_group
     if @user.update(user_params)
       flash[:success] = "ユーザー「#{@user.name}」を更新しました"
       redirect_to admin_user_url(@user)
@@ -57,7 +57,7 @@ class Admin::UsersController < ApplicationController
 
   def user_params
     params.require(:user)
-        .permit(:name, :email, :admin, :password, :password_confirmation)
+          .permit(:name, :email, :admin, :password, :password_confirmation)
   end
 
   def require_admin
@@ -75,5 +75,4 @@ class Admin::UsersController < ApplicationController
       @user.user_group&.destroy
     end
   end
-
 end

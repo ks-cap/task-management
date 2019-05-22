@@ -17,13 +17,15 @@ class TasksController < ApplicationController
          end.ransack(params[:q])
 
     @tasks = @q.result(distinct: true)
-                 .page(params[:page])
-                 .per(TASK_DISPLAY_PER_PAGE)
+               .page(params[:page])
+               .per(TASK_DISPLAY_PER_PAGE)
 
     respond_to do |format|
       format.html
-      format.csv { send_data @tasks.generate_csv,
-                             filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
+      format.csv do
+        send_data @tasks.generate_csv,
+                  filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv"
+      end
     end
   end
 
@@ -66,7 +68,7 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task)
-        .permit(:name, :description, :deadline, :state, :image)
+          .permit(:name, :description, :deadline, :state, :image)
   end
 
   def set_task

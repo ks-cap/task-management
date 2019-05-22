@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::GroupsController < ApplicationController
   before_action :set_group, only: %i[edit update destroy]
 
@@ -15,8 +17,7 @@ class Admin::GroupsController < ApplicationController
     @group = Group.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @group = Group.new(group_params)
@@ -44,6 +45,7 @@ class Admin::GroupsController < ApplicationController
   end
 
   private
+
   def set_group
     @group = Group.find(params[:id])
   end
