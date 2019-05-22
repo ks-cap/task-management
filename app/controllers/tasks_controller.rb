@@ -8,7 +8,9 @@ class TasksController < ApplicationController
   def index
     # グループに属している場合はグループに関連するタスク表示
     # 所属していない場合は自分のタスクのみ表示
-    @q = if current_user.group.present?
+    @q = if current_user.admin?
+           Task.all
+         elsif current_user.group.present?
            Task.with_group(current_user.group)
          else
            current_user.tasks
@@ -68,7 +70,11 @@ class TasksController < ApplicationController
   end
 
   def set_task
-    @task = current_user.tasks.find(params[:id])
+    @task = if current_user.admin?
+              Task.find(params[:id])
+            else
+              current_user.tasks.find(params[:id])
+            end
   end
 
   def only_my_group_editable
