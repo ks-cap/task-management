@@ -10,3 +10,9 @@ User.find_or_create_by!(email: 'admin@example.com') do |user|
   user.password = 'password'
   user.password_confirmation = 'password'
 end
+
+5.times do |n|
+  FactoryBot.create(:user, name: "test_user_#{n}")
+end
+
+

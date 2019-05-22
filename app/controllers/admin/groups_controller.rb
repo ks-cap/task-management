@@ -21,7 +21,7 @@ class Admin::GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      flash[:notice] = "グループ「#{@group.name}」を作成しました"
+      flash[:success] = "グループ「#{@group.name}」を作成しました"
       redirect_to admin_group_url(@group)
     else
       render :new
@@ -30,7 +30,7 @@ class Admin::GroupsController < ApplicationController
 
   def update
     if @group.update
-      flash[:notice] = "グループ「#{@group.name}」を更新しました"
+      flash[:success] = "グループ「#{@group.name}」を更新しました"
       redirect_to admin_group_url(@group)
     else
       render :edit

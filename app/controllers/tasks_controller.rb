@@ -3,14 +3,25 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
 
+  TASK_DISPLAY_PER_PAGE = 10
+
   def index
-    # ログインしているユーザーに紐づくTaskだけを表示
-    @q = current_user.tasks.ransack(params[:q])
-    @tasks = @q.result(distinct: true).page(params[:page])
+    # グループに属している場合はグループに関連するタスク表示
+    # 所属していない場合は自分のタスクのみ表示
+    @q = if current_user.group.present?
+           Task.with_group(current_user.group)
+         else
+           current_user.tasks
+         end.ransack(params[:q])
+
+    @tasks = @q.result(distinct: true)
+                 .page(params[:page])
+                 .per(TASK_DISPLAY_PER_PAGE)
 
     respond_to do |format|
       format.html
-      format.csv { send_data @tasks.generate_csv, filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
+      format.csv { send_data @tasks.generate_csv,
+                             filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
     end
   end
 
@@ -52,7 +63,8 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :deadline, :state, :image)
+    params.require(:task)
+        .permit(:name, :description, :deadline, :state, :image)
   end
 
   def set_task

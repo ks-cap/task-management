@@ -5,6 +5,7 @@ class Task < ApplicationRecord
 
   belongs_to :user
   belongs_to :owner, class_name: 'User'
+  has_one_attached :image
 
   validates :name, presence: true, length: { maximum: 30 }
   validates :description, length: { maximum: 100 }
@@ -14,8 +15,7 @@ class Task < ApplicationRecord
   validate :image_type
 
   scope :recent, -> { order(created_at: :desc) }
-
-  has_one_attached :image
+  scope :with_group, -> (group) { includes(user: :group).where(groups: { id: group&.id }) }
 
   # ransack使用時の制約追加
   def self.ransackable_attributes(_auth_object = nil)
