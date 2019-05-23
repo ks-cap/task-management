@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   # ログイン画面を表示するアクションに対しては、定義済みのフィルターを通らないようにする
   skip_before_action :login_required
 
-  def new
-  end
+  def new; end
 
   def create
     # 送られてきたメールアドレスでユーザを検索
@@ -15,7 +16,7 @@ class SessionsController < ApplicationController
     if user&.authenticate(session_params[:password])
       # セッションにuser_idを格納
       session[:user_id] = user.id
-      flash[:success] = 'ログインしました'
+      flash[:success] = I18n.t('message.sessions.login')
       redirect_to root_path
     else
       render :new
@@ -25,11 +26,12 @@ class SessionsController < ApplicationController
   def destroy
     # セッション内の情報を全て削除
     reset_session
-    flash[:danger] = 'ログアウトしました'
+    flash[:danger] = I18n.t('message.sessions.logout')
     redirect_to root_path
   end
 
   private
+
   # リクエストパラメータとして送られてきた情報が想定通りであるかチェックし、受け付ける想定箇所だけを抜くとる
   def session_params
     params.require(:session).permit(:email, :password)

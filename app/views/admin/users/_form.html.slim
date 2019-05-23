@@ -6,18 +6,21 @@
 = form_with model: [:admin, user], local: true do |f|
   .form-group
     = f.label :name, User.human_attribute_name(:name)
-    = f.text_field :name, class: 'form-control'
+    = f.text_field :name, class: 'form-control', placeholder: I18n.t('message.tasks.name.insert')
   .form-group
     = f.label :email, User.human_attribute_name(:email)
-    = f.text_field :email, class: 'form-control'
+    = f.text_field :email, class: 'form-control', placeholder: I18n.t('message.users.mail.insert')
   .form-check
     = f.label :admin, class: 'form-check-label' do
       = f.check_box :admin, class: 'form-check-input'
       | #{User.human_attribute_name(:admin)}
   .form-group
+    = f.label :group
+    = f.collection_select :group, Group.all, :id, :name, { include_blank: true}, { class: 'form-control' }
+  .form-group
     = f.label :password, User.human_attribute_name(:password)
-    = f.password_field :password, class: 'form-control'
+    = f.password_field :password, class: 'form-control', placeholder: I18n.t('message.users.password.insert')
   .form-group
     = f.label :password_confirmation, User.human_attribute_name(:password_confirmation)
-    = f.password_field :password_confirmation, class: 'form-control'
+    = f.password_field :password_confirmation, class: 'form-control', placeholder: I18n.t('message.users.password_confirmation.insert')
   = f.submit nil, class: 'btn btn-primary'
