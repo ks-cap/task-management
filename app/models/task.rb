@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Task < ApplicationRecord
-  enum state: { 未着手: '未着手', '着手中': '着手中', 完了: '完了' }
-
+  #enum state: { 未着手: '未着手', '着手中': '着手中', 完了: '完了' }
+  enum state: { waiting: 0, working: 1, completed: 2 }
   belongs_to :user
   belongs_to :owner, class_name: 'User'
   has_one_attached :image

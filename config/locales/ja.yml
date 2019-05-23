@@ -20,6 +20,12 @@ ja:
       task: タスク
       user: ユーザー
       group: グループ
+    enums:
+      task:
+        state:
+          waiting: 未着手
+          working: 着手中
+          completed: 完了
     attributes:
       task:
         id: ID

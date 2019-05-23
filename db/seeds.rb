@@ -16,14 +16,12 @@ end
 end
 
 100.times do |n|
-  case n % 4
+  case n % 3
   when 0 then
-    FactoryBot.create(:task, state: :未着手, name: "タイトル_#{n}", user: User.first, owner: User.first)
+    FactoryBot.create(:task, state: 0, name: "タイトル_#{n}", user: User.first, owner: User.first)
   when 1 then
-    FactoryBot.create(:task, state: :完了, name: "タイトル_#{n}", user: User.second, owner: User.fourth)
+    FactoryBot.create(:task, state: 2, name: "タイトル_#{n}", user: User.second, owner: User.fourth)
   when 2 then
-    FactoryBot.create(:task, state: :着手中, name: "タイトル_#{n}", user: User.third, owner: User.fifth)
-  when 3 then
-    FactoryBot.create(:task, owner: User.first)
+    FactoryBot.create(:task, state: 1, name: "タイトル_#{n}", user: User.third, owner: User.fifth)
   end
 end
