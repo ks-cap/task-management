@@ -3,3 +3,7 @@ ja:
   message:
     tasks:
       destroy: "タスク「%{name}」を削除します。よろしいですか？"
+      name:
+        insert: タスク名を入力してください
+      description:
+        insert: 詳しい説明を入力してください

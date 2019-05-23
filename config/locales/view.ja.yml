@@ -2,10 +2,11 @@
 ja:
   tasks:
     index:
-      view:
-        title: タスク一覧
-        search: 検索
-      placeholder:
-        name: タスク名を入力してください
-
-
+      title: タスク一覧
+      search: 検索
+    show:
+      title: タスクの詳細
+    new:
+      title: タスクの新規登録
+    edit:
+      title: タスクの編集

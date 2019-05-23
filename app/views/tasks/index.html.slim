@@ -1,14 +1,14 @@
-h1 = I18n.t('tasks.index.view.title')
+h1 = I18n.t('tasks.index.title')
 
 .card
   .card-header
-    h4 = I18n.t('tasks.index.view.search')
+    h4 = I18n.t('tasks.index.search')
   .card-body
     = search_form_for @q, class: 'mb-3' do |f|
       .form-group.row
         = f.label :name_cont, Task.human_attribute_name(:name), class: 'col-sm-2 col-form-label'
         .col-sm-10
-          = f.search_field :name_cont, class: 'form-control', placeholder: I18n.t('tasks.index.placeholder.name')
+          = f.search_field :name_cont, class: 'form-control', placeholder: I18n.t('message.tasks.name.insert')
       .form-group.row
         = f.label :created_at, Task.human_attribute_name(:created_at), class: 'col-sm-2 col-form-label'
         .col-sm-10

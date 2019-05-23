@@ -7,17 +7,19 @@
 = form_with model: task, local: true do |f|
   .form-group
     = f.label :name
-    = f.text_field :name, class: 'form-control', id: 'task_name', placeholder: 'タスク名を入力してください'
+    = f.text_field :name, class: 'form-control', id: 'task_name',
+            placeholder: I18n.t('message.tasks.name.insert')
   .form-group
     = f.label :description
-    = f.text_area :description, rows: 5, class: 'form-control', id: 'task_description', placeholder: '詳しい説明を入力してください'
+    = f.text_area :description, rows: 5, class: 'form-control', id: 'task_description',
+            placeholder: I18n.t('message.tasks.description.insert')
   .form-group
     = f.label :deadline
-    = f.date_select :deadline, {}, class: 'form-control date-picker', id: 'task_deadline', placeholder: 'タスク名を入力してください'
+    = f.date_select :deadline, {}, class: 'form-control date-picker', id: 'task_deadline'
   .form-group
     = f.label :state
     = f.select :state, Task.states.keys.map { |k| [I18n.t("activerecord.enums.task.state.#{k}"), k] },
-            class: 'form-control', id: 'task_state', placeholder: 'タスク名を入力してください'
+            class: 'form-control', id: 'task_state'
   .form-group
     = f.label :image
     = f.file_field :image, class: 'form-control'
