@@ -1,14 +1,14 @@
-h1 タスク一覧
+h1 = I18n.t('tasks.index.view.title')
 
 .card
   .card-header
-    h4 検索
+    h4 = I18n.t('tasks.index.view.search')
   .card-body
     = search_form_for @q, class: 'mb-3' do |f|
       .form-group.row
         = f.label :name_cont, Task.human_attribute_name(:name), class: 'col-sm-2 col-form-label'
         .col-sm-10
-          = f.search_field :name_cont, class: 'form-control', placeholder: 'タスク名を入力してください'
+          = f.search_field :name_cont, class: 'form-control', placeholder: I18n.t('tasks.index.placeholder.name')
       .form-group.row
         = f.label :created_at, Task.human_attribute_name(:created_at), class: 'col-sm-2 col-form-label'
         .col-sm-10
@@ -27,17 +27,17 @@ h1 タスク一覧
           = f.select :state_eq, Task.states.keys.to_a, {include_blank: true}
       .form-group
         = f.submit class: 'btn btn-outline-primary'
-        = link_to '検索条件のクリア', tasks_path, class: 'btn btn-outline-primary'
+        = link_to I18n.t('button.clear'), tasks_path, class: 'btn btn-outline-primary'
 
 .form-group.row
   .col-sm-10
-    = link_to '新規登録', new_task_path, class: 'btn btn-outline-primary'
+    = link_to I18n.t('button.new'), new_task_path, class: 'btn btn-outline-primary'
   .col-sm-10
-    = link_to 'エクスポート', tasks_path(format: :csv), class: 'btn btn-outline-primary'
+    = link_to I18n.t('button.export'), tasks_path(format: :csv), class: 'btn btn-outline-primary'
   .col-sm-10
     = form_tag tasks_import_csvs_path, multipart: true, class: 'mb-3' do
       = file_field_tag :file
-      = submit_tag "インポート", class: 'btn btn-outline-primary'
+      = submit_tag I18n.t('button.import'), class: 'btn btn-outline-primary'
 
 .mb-3
   = paginate @tasks
@@ -60,7 +60,7 @@ table.table.table-hover
         td= I18n.t("activerecord.enums.task.state.#{task.state}")
         td
           - if task.editable?(current_user)
-            = link_to '編集', edit_task_path(task), class: 'btn btn-primary mr-3'
-            = link_to '削除', task, method: :delete, remote: false,
-                    data: { confirm: "タスク「#{task.name}」を削除します。よろしいですか？" },
+            = link_to I18n.t('button.edit'), edit_task_path(task), class: 'btn btn-primary mr-3'
+            = link_to I18n.t('button.destroy'), task, method: :delete, remote: false,
+                    data: { confirm: I18n.t('message.tasks.destroy', name: task.name) },
                     class: 'btn btn-danger delete'

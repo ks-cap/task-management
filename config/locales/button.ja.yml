@@ -1,0 +1,9 @@
+---
+ja:
+  button:
+    clear: クリア
+    new: 新規登録
+    edit: 編集
+    destroy: 削除
+    import: インポート
+    export: エクスポート

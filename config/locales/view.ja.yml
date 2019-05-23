@@ -1,0 +1,11 @@
+---
+ja:
+  tasks:
+    index:
+      view:
+        title: タスク一覧
+        search: 検索
+      placeholder:
+        name: タスク名を入力してください
+
+

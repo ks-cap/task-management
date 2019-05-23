@@ -1,55 +1,5 @@
 ---
 ja:
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
-        restrict_dependent_destroy:
-          has_one: "%{record}が存在しているので削除できません"
-          has_many: "%{record}が存在しているので削除できません"
-        task:
-          name:
-            over_word_count: "の文字数が上限に達しています（30文字以内）"
-            comma: "にカンマを含めることはできません"
-          description:
-            over_word_count: "の文字数が上限に達しています（100文字以内）"
-          image:
-            no_file: "ファイルが存在しません"
-            different_type: "はJPEGとPNG以外添付できません"
-    models:
-      task: タスク
-      user: ユーザー
-      group: グループ
-    enums:
-      task:
-        state:
-          waiting: 未着手
-          working: 着手中
-          completed: 完了
-    attributes:
-      task:
-        id: ID
-        name: 名称
-        description: 詳しい説明
-        deadline: 終了期限
-        state: 状態
-        image: 画像
-        owner: 作成者
-        created_at: 登録日時
-        updated_at: 更新日時
-      user:
-        name: 名前
-        email: メールアドレス
-        admin: 管理者権限
-        group: グループ
-        password: パスワード
-        password_confirmation: パスワード（確認）
-        created_at: 登録日時
-        updated_at: 更新日時
-      group:
-        name: 名前
-        created_at: 登録日時
-        updated_at: 更新日時
   date:
     abbr_day_names:
     - 日
@@ -176,6 +126,21 @@ ja:
       too_long: は%{count}文字以内で入力してください
       too_short: は%{count}文字以上で入力してください
       wrong_length: は%{count}文字で入力してください
+      record_invalid: 'バリデーションに失敗しました: %{errors}'
+      restrict_dependent_destroy:
+        has_one: "%{record}が存在しているので削除できません"
+        has_many: "%{record}が存在しているので削除できません"
+      task:
+        name:
+          over_word_count: の文字数が上限に達しています（30文字以内）
+          comma: にカンマを含めることはできません
+        description:
+          over_word_count: の文字数が上限に達しています（100文字以内）
+        deadline:
+          before_date: は現在日付以降の日時を設定してください
+        image:
+          no_file: ファイルが存在しません
+          different_type: はJPEGとPNG以外添付できません
     template:
       body: 次の項目を確認してください
       header:

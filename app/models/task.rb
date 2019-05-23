@@ -66,16 +66,16 @@ class Task < ApplicationRecord
   private
 
   def validate_name_not_including_comma
-    errors.add(:name, I18n.t('activerecord.errors.messages.task.name.comma', locale: :ja)) if name&.include?(',') || name&.include?('、')
+    errors.add(:name, I18n.t('errors.messages.task.name.comma', locale: :ja)) if name&.include?(',') || name&.include?('、')
   end
 
   def deadline_cannot_be_set_before_now
-    errors.add(:deadline, 'は現在日付以降の日時を設定してください') if deadline < Time.current.beginning_of_day
+    errors.add(:deadline, I18n.t('errors.messages.task.deadline.before_date')) if deadline < Time.current.beginning_of_day
   end
 
   def image_type
     if image.attached?
-      errors.add(:image, I18n.t('activerecord.errors.messages.task.image.different_type', locale: :ja)) unless image.content_type.in?(%("image/jpeg image/png"))
+      errors.add(:image, I18n.t('errors.messages.task.image.different_type', locale: :ja)) unless image.content_type.in?(%("image/jpeg image/png"))
     end
   end
 end

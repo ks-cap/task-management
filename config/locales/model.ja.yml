@@ -1,0 +1,37 @@
+---
+ja:
+  activerecord:
+    models:
+      task: タスク
+      user: ユーザー
+      group: グループ
+    attributes:
+      task:
+        id: ID
+        name: 名称
+        description: 詳しい説明
+        deadline: 終了期限
+        state: 状態
+        image: 画像
+        owner: 作成者
+        created_at: 登録日時
+        updated_at: 更新日時
+      user:
+        name: 名前
+        email: メールアドレス
+        admin: 管理者権限
+        group: グループ
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        created_at: 登録日時
+        updated_at: 更新日時
+      group:
+        name: 名前
+        created_at: 登録日時
+        updated_at: 更新日時
+    enums:
+      task:
+        state:
+          waiting: 未着手
+          working: 着手中
+          completed: 完了

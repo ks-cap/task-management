@@ -1,0 +1,5 @@
+---
+ja:
+  message:
+    tasks:
+      destroy: "タスク「%{name}」を削除します。よろしいですか？"
