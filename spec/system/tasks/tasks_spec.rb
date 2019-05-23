@@ -17,7 +17,7 @@ describe 'タスク管理機能', type: :system do
     visit login_path
     fill_in 'メールアドレス', with: login_user.email
     fill_in 'パスワード', with: login_user.password
-    click_button 'ログインする'
+    click_button 'ログイン'
   end
 
   shared_examples_for 'ユーザーAが作成したタスクが表示される' do

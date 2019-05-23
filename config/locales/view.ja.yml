@@ -21,3 +21,5 @@ ja:
       title: ユーザー登録
     edit:
       title: ユーザーの編集
+  sessions:
+    title: ログイン

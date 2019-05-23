@@ -12,7 +12,7 @@ describe 'ユーザー管理機能', type: :system do
     visit login_path
     fill_in 'メールアドレス', with: user_a.email
     fill_in 'パスワード', with: user_a.password
-    click_button 'ログインする'
+    click_button 'ログイン'
   end
 
   describe '新規作成機能' do

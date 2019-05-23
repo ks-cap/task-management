@@ -29,6 +29,9 @@ ja:
         name: 名前
         created_at: 登録日時
         updated_at: 更新日時
+      session:
+        email: メールアドレス
+        password: パスワード
     enums:
       task:
         state:

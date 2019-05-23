@@ -9,7 +9,7 @@ RSpec.describe '登録したタスクを確認する', type: :system do
     visit login_path
     fill_in User.human_attribute_name(:email),    with: current_user.email
     fill_in User.human_attribute_name(:password), with: current_user.password
-    click_button 'ログインする'
+    click_button 'ログイン'
   end
 
   describe 'タスク一覧' do
