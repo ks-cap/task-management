@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :group do
-    name { 'test_group' }
+    sequence(:name) { |n| "team_#{n}" }
   end
 end
