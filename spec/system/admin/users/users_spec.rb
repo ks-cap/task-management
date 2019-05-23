@@ -10,9 +10,9 @@ describe 'ユーザー管理機能', type: :system do
   before do
     # ログインする
     visit login_path
-    fill_in 'メールアドレス', with: user_a.email
-    fill_in 'パスワード', with: user_a.password
-    click_button 'ログイン'
+    fill_in I18n.t('activerecord.attributes.session.email'), with: user_a.email
+    fill_in I18n.t('activerecord.attributes.session.password'), with: user_a.password
+    click_button I18n.t('button.login')
   end
 
   describe '新規作成機能' do

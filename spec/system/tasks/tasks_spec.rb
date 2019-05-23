@@ -15,9 +15,9 @@ describe 'タスク管理機能', type: :system do
   before do
     # ログインする
     visit login_path
-    fill_in 'メールアドレス', with: login_user.email
-    fill_in 'パスワード', with: login_user.password
-    click_button 'ログイン'
+    fill_in I18n.t('activerecord.attributes.session.email'), with: login_user.email
+    fill_in I18n.t('activerecord.attributes.session.password'), with: login_user.password
+    click_button I18n.t('button.login')
   end
 
   shared_examples_for 'ユーザーAが作成したタスクが表示される' do
@@ -47,7 +47,7 @@ describe 'タスク管理機能', type: :system do
       let(:login_user) { user_a }
       context 'ファイルを選択せずにインポートボタンを押したとき' do
         before do
-          click_button 'インポート'
+          click_button I18n.t('button.import')
         end
 
         it 'エラーとなる' do
@@ -75,9 +75,9 @@ describe 'タスク管理機能', type: :system do
 
     before do
       visit new_task_path
-      fill_in '名称', with: task_name
-      fill_in '詳しい説明', with: task_description
-      click_button '登録する'
+      fill_in I18n.t('activerecord.attributes.task.name'), with: task_name
+      fill_in I18n.t('activerecord.attributes.task.description'), with: task_description
+      click_button I18n.t('button.create')
     end
 
     context '新規作成画面で名称を入力したとき' do

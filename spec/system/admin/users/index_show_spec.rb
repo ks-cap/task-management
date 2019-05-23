@@ -9,7 +9,7 @@ RSpec.describe 'ユーザー一覧と詳細', type: :system do
     visit login_path
     fill_in User.human_attribute_name(:email), with: current_user.email
     fill_in User.human_attribute_name(:password), with: current_user.password
-    click_button 'ログイン'
+    click_button I18n.t('button.login')
   end
 
   describe '詳細' do
