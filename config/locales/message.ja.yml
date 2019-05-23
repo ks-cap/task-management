@@ -7,3 +7,13 @@ ja:
         insert: タスク名を入力してください
       description:
         insert: 詳しい説明を入力してください
+    users:
+      destroy: "ユーザー「#{name}」を削除します。よろしいですか？"
+      name:
+        insert: 名前を入力してください
+      mail:
+        insert: メールアドレスを入力してください'
+      password:
+        insert: パスワードを入力してください
+      password_confirmation:
+        insert: 再度パスワードを入力してください

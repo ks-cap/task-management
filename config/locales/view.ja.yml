@@ -10,3 +10,14 @@ ja:
       title: タスクの新規登録
     edit:
       title: タスクの編集
+  users:
+    index:
+      title: ユーザー一覧
+      yes: あり
+      no: なし
+    show:
+      title: ユーザーの詳細
+    new:
+      title: ユーザー登録
+    edit:
+      title: ユーザーの編集
