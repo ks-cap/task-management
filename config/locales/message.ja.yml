@@ -17,3 +17,5 @@ ja:
         insert: パスワードを入力してください
       password_confirmation:
         insert: 再度パスワードを入力してください
+    groups:
+      destroy: "ユーザー「#{name}」を削除します。よろしいですか？"

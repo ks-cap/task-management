@@ -1,7 +1,7 @@
-h1 グループの詳細
+h1 = I18n.t('groups.show.title')
 
 .nav.justify-content-end
-  = link_to '一覧', admin_groups_path, class: 'nav-link'
+  = link_to I18n.t('button.list'), admin_groups_path, class: 'nav-link'
 
 .mb-3
   table.table.table-hover
@@ -17,6 +17,7 @@ h1 グループの詳細
         td= l(@group.created_at, format: :long)
 
 = render partial: 'user_list', locals: { group: @group } if @group.users.present?
-= link_to '編集', admin_group_path(@group), class: 'btn btn-primary mr-3'
-= link_to '削除', [:admin, @group], method: :delete,
-        data: { confirm: "タスク「#{@group.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger delete'
+= link_to I18n.t('button.edit'), admin_group_path(@group), class: 'btn btn-primary mr-3'
+= link_to I18n.t('button.destroy'), [:admin, @group], method: :delete,
+        data: { confirm: I18n.t('message.groups.destroy', name: @group.name) },
+        class: 'btn btn-danger delete'

@@ -23,3 +23,12 @@ ja:
       title: ユーザーの編集
   sessions:
     title: ログイン
+  groups:
+    index:
+      title: グループ一覧
+    show:
+      title: グループの詳細
+    new:
+      title: グループ新規作成
+    edit:
+      title: グループ編集

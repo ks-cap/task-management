@@ -1,6 +1,6 @@
-h1 グループ編集
+h1 = I18n.t('groups.edit.title')
 
 .nav.justify-content-end
-  = link_to '一覧', admin_groups_path, class: 'nav-link'
+  = link_to I18n.t('button.list'), admin_groups_path, class: 'nav-link'
 
 = render partial: 'form', locals: { group: @group }
