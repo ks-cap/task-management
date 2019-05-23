@@ -2,13 +2,21 @@
 ja:
   message:
     tasks:
-      destroy: "タスク「%{name}」を削除します。よろしいですか？"
+      create: "タスク「%{name}」を登録しました"
+      update: "タスク「%{name}」を更新しました"
+      destroy: "タスク「%{name}」を削除しました"
+      destroy_check: "タスク「%{name}」を削除します。よろしいですか？"
+      editable: "タスク「%{name}」の操作権限がありません"
       name:
         insert: タスク名を入力してください
       description:
         insert: 詳しい説明を入力してください
     users:
-      destroy: "ユーザー「#{name}」を削除します。よろしいですか？"
+      create: "ユーザー「%{name}」を登録しました"
+      update: "ユーザー「%{name}」を更新しました"
+      destroy: "ユーザー「%{name}」を削除しました"
+      destroy_check: "ユーザー「%{name}」を削除します。よろしいですか？"
+      admin_alone: "管理者が一人のため「%{name}」を削除できません"
       name:
         insert: 名前を入力してください
       mail:
@@ -17,5 +25,11 @@ ja:
         insert: パスワードを入力してください
       password_confirmation:
         insert: 再度パスワードを入力してください
+    sessions:
+      login: ログインしました
+      logout: ログアウトしました
     groups:
-      destroy: "ユーザー「#{name}」を削除します。よろしいですか？"
+      create: "グループ「%{name}」を登録しました"
+      update: "グループ「%{name}」を更新しました"
+      destroy: "グループ「%{name}」を削除しました"
+      destroy_check: "グループ「%{name}」を削除します。よろしいですか？"

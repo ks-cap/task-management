@@ -26,7 +26,7 @@ class Admin::UsersController < ApplicationController
     @user = User.new(user_params)
     prepare_group
     if @user.save
-      flash[:success] = "ユーザー「#{@user.name}」を登録しました"
+      flash[:success] = I18n.t('message.users.create', name: @user.name)
       redirect_to admin_user_url(@user)
     else
       render :new
@@ -36,7 +36,7 @@ class Admin::UsersController < ApplicationController
   def update
     prepare_group
     if @user.update(user_params)
-      flash[:success] = "ユーザー「#{@user.name}」を更新しました"
+      flash[:success] = I18n.t('message.users.update', name: @user.name)
       redirect_to admin_user_url(@user)
     else
       render :edit
@@ -45,10 +45,10 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     if User.where(admin: true).count == 1 && @user.admin
-      flash[:danger] = "管理者が一人のため「#{@user.name}」を削除できません"
+      flash[:danger] = I18n.t('message.users.admin_alone', name: @user.name)
     else
       @user.destroy
-      flash[:danger] = "タスク「#{@user.name}」を削除しました"
+      flash[:danger] = I18n.t('message.users.destroy', name: @user.name)
     end
     redirect_to admin_users_url
   end

@@ -42,7 +42,7 @@ class TasksController < ApplicationController
     @task = current_user.tasks.new(task_params)
     @task.owner = current_user
     if @task.save
-      flash[:success] = "タスク「#{@task.name}」を登録しました"
+      flash[:success] = I18n.t('message.tasks.create', name: @task.name)
       redirect_to tasks_url
     else
       render :new
@@ -51,7 +51,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      flash[:success] = "タスク「#{@task.name}」を更新しました"
+      flash[:success] = I18n.t('message.tasks.update', name: @task.name)
       redirect_to tasks_url
     else
       render :edit
@@ -60,7 +60,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    flash[:danger] = "タスク「#{@task.name}」を削除しました"
+    flash[:danger] = I18n.t('message.tasks.destroy', name: @task.name)
     redirect_to tasks_url
   end
 
@@ -81,7 +81,7 @@ class TasksController < ApplicationController
 
   def only_my_group_editable
     unless Task.find(params[:id]).editable?(current_user)
-      flash[:danger] = "タスク「#{@task.name}」の操作権限がありません"
+      flash[:danger] = I18n.t('message.tasks.editable', name: @task.name)
       redirect_to tasks_url
     end
   end

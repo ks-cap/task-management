@@ -22,7 +22,7 @@ class Admin::GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      flash[:success] = "グループ「#{@group.name}」を作成しました"
+      flash[:success] = I18n.t('message.tasks.create', name: @group.name)
       redirect_to admin_group_url(@group)
     else
       render :new
@@ -31,7 +31,7 @@ class Admin::GroupsController < ApplicationController
 
   def update
     if @group.update
-      flash[:success] = "グループ「#{@group.name}」を更新しました"
+      flash[:success] = I18n.t('message.tasks.update', name: @group.name)
       redirect_to admin_group_url(@group)
     else
       render :edit
@@ -40,7 +40,7 @@ class Admin::GroupsController < ApplicationController
 
   def destroy
     @group.destroy
-    flash[:danger] = "グループ「#{@group.name}」を削除しました"
+    flash[:danger] = I18n.t('message.tasks.destroy', name: @group.name)
     redirect_to admin_groups_url
   end
 

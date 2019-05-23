@@ -25,5 +25,5 @@ table.table.table-hover
         td
           = link_to I18n.t('button.edit'), edit_admin_user_path(user), class: 'btn btn-primary mr-3'
           = link_to I18n.t('button.destroy'), [:admin, user], method: :delete, remote: false,
-                  data: { confirm: I18n.t('message.users.destroy', name: user.name) },
+                  data: { confirm: I18n.t('message.users.destroy_check', name: user.name) },
                   class: 'btn btn-danger'
