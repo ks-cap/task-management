@@ -13,8 +13,8 @@ ja:
   users:
     index:
       title: ユーザー一覧
-      yes: あり
-      no: なし
+      available: あり
+      not_available: なし
     show:
       title: ユーザーの詳細
     new:
