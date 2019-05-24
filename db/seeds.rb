@@ -11,17 +11,32 @@ User.find_or_create_by!(email: 'admin@example.com') do |user|
   user.password_confirmation = 'password'
 end
 
+3.times do |n|
+  FactoryBot.create(:group, name: "test_group_#{n}")
+end
+
 5.times do |n|
-  FactoryBot.create(:user, name: "test_user_#{n}")
+  case n % 3
+  when 0 then
+    FactoryBot.create(:user, name: "test_user_#{n}", email: "test_email_#{n}@example.com", group: Group.first)
+  when 1 then
+    FactoryBot.create(:user, name: "test_user_#{n}", email: "test_email_#{n}@example.com", group: Group.second)
+  when 2 then
+    FactoryBot.create(:user, name: "test_user_#{n}", email: "test_email_#{n}@example.com", group: Group.third)
+  end
 end
 
 100.times do |n|
-  case n % 3
+  case n % 5
   when 0 then
-    FactoryBot.create(:task, state: 0, name: "タイトル_#{n}", user: User.first, owner: User.first)
+    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.first, owner: User.first)
   when 1 then
-    FactoryBot.create(:task, state: 2, name: "タイトル_#{n}", user: User.second, owner: User.fourth)
+    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.second, owner: User.fourth)
   when 2 then
-    FactoryBot.create(:task, state: 1, name: "タイトル_#{n}", user: User.third, owner: User.fifth)
+    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.third, owner: User.fifth)
+  when 3 then
+    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.second, owner: User.second)
+  when 4 then
+    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.third, owner: User.third)
   end
 end

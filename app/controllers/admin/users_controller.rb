@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
   before_action :require_admin
   before_action :set_user, only: %i[show edit update destroy]
 
-  USER_DISPLAY_PER_PAGE = 10
+  USER_DISPLAY_PER_PAGE = 25
 
   def index
     @users = User.all

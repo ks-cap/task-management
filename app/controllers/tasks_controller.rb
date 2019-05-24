@@ -3,7 +3,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
 
-  TASK_DISPLAY_PER_PAGE = 10
+  TASK_DISPLAY_PER_PAGE = 25
 
   def index
     # グループに属している場合はグループに関連するタスク表示
