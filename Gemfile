@@ -81,3 +81,6 @@ gem 'ransack'
 
 # Pagination
 gem 'kaminari'
+
+# Manage the order
+gem 'ranked-model'
