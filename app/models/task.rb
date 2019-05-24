@@ -16,7 +16,7 @@ class Task < ApplicationRecord
 
   scope :recent, -> { order(created_at: :desc) }
   scope :with_group, ->(group) { includes(user: :group).where(groups: { id: group&.id }) }
-
+  scope :expired, -> { where('deadline <= ?', Date.today) }
   # ransack使用時の制約追加
   def self.ransackable_attributes(_auth_object = nil)
     %w[name created_at deadline state]

@@ -1,3 +1,5 @@
+= render partial: 'expered_alert', locals: {expired_tasks: @expired_tasks} if @expired_tasks.present?
+
 h1 = I18n.t('tasks.index.title')
 
 .card

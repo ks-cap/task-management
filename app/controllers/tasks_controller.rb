@@ -8,6 +8,8 @@ class TasksController < ApplicationController
   def index
     # グループに属している場合はグループに関連するタスク表示
     # 所属していない場合は自分のタスクのみ表示
+    @expired_tasks = Task.expired.where(user_id: current_user.id)
+
     @q = if current_user.admin?
            Task.all
          elsif current_user.group.present?
