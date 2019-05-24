@@ -22,7 +22,7 @@ table.table.table-hover
       td= @user.admin? ? I18n.t('users.index.yes') : I18n.t('users.index.no')
     tr
       th= User.human_attribute_name(:image)
-      td= image_tag @user.image if @user.image.attached?
+      td= image_tag @user.image.variant(resize:'300x300').processed if @user.image.attached?
     tr
       th= User.human_attribute_name(:created_at)
       td= l(@user.created_at, format: :long)
