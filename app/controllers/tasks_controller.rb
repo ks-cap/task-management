@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[show edit update destroy]
+  before_action :set_task, only: %i[show edit update destroy sort]
 
   TASK_DISPLAY_PER_PAGE = 25
 
@@ -64,12 +64,20 @@ class TasksController < ApplicationController
     redirect_to tasks_url
   end
 
+
+  def sort
+    set_task
+    @task.update(task_params)
+    render nothing: true
+  end
+
   private
 
   def task_params
     params.require(:task)
-          .permit(:name, :description, :deadline, :state, :image)
+          .permit(:name, :description, :deadline, :state, :image, :row_order_position)
   end
+
 
   def set_task
     @task = if current_user.admin?
@@ -85,4 +93,5 @@ class TasksController < ApplicationController
       redirect_to tasks_url
     end
   end
+
 end

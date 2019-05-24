@@ -43,7 +43,7 @@ h1 = I18n.t('tasks.index.title')
   = paginate @tasks
   = page_entries_info @tasks
 
-table.table.table-hover
+table.table.table-hover.table-sortable
   thead.thead-default
     tr
       th= sort_link(@q, :name)
@@ -53,7 +53,7 @@ table.table.table-hover
       th
   tboby
     - @tasks.each do |task|
-      tr id="task-#{task.id}"
+      tr.item data = { model_name: task.class.name.underscore, update_url: tasks_sort_path(task) }
         td= link_to task.name, task_path(task)
         td= l(task.created_at, format: :long)
         td= l(task.deadline, format: :long)

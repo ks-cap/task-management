@@ -13,5 +13,5 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require jquery.ui.sortable
+//= require jquery-ui/widgets/sortable
 //= require_tree .
