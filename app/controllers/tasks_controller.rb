@@ -18,7 +18,7 @@ class TasksController < ApplicationController
 
     @tasks = @q.result(distinct: true)
                .page(params[:page])
-               .per(TASK_DISPLAY_PER_PAGE)
+               .per(TASK_DISPLAY_PER_PAGE).rank(:row_order)
 
     respond_to do |format|
       format.html
