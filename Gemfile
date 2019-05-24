@@ -84,3 +84,6 @@ gem 'kaminari'
 
 # Manage the order
 gem 'ranked-model'
+
+# Using JQuery
+gem 'jquery-ui-rails'
