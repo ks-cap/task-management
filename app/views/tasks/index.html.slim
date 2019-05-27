@@ -25,12 +25,8 @@ h1 = I18n.t('tasks.index.title')
           = f.date_select :deadline_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
       .form-group.row
         = f.label :state_eq, Task.human_attribute_name(:state), class: 'col-sm-2 col-form-label'
-        .col-sm-10
-          = f.select :state_eq, Task.states.keys.map { |k| [I18n.t("activerecord.enums.task.state.#{k}"), k] }, {include_blank: true}
-      /.form-group.row
-        = f.label :tag_list, Task.human_attribute_name(:tag_list), class: 'col-sm-2 col-form-label'
-        .col-sm-10
-          = f.search_field :tag_list, class: 'form-control'
+        .col-sm-2
+          = f.select :state_eq, Task.states.keys.map { |k| [I18n.t("activerecord.enums.task.state.#{k}"), k] }, {include_blank: true},  class: 'form-control'
       .form-group
         = f.submit class: 'btn btn-outline-primary'
         = link_to I18n.t('button.clear'), tasks_path, class: 'btn btn-outline-primary'
