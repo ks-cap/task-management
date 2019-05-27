@@ -24,11 +24,11 @@ class Task < ApplicationRecord
 
   # ransack使用時の制約追加
   def self.ransackable_attributes(_auth_object = nil)
-    %w[name created_at deadline state]
+    %w[name created_at deadline state owner_id]
   end
 
   def self.ransackable_associations(_auth_object = nil)
-    []
+    %w[user]
   end
 
   def self.csv_attributes
