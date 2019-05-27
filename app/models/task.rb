@@ -16,6 +16,7 @@ class Task < ApplicationRecord
   validate :validate_name_not_including_comma
   validate :deadline_cannot_be_set_before_now, if: -> { deadline.present? }
   validate :image_type
+  validate :tags_count_over
 
   scope :recent, -> { order(created_at: :desc) }
   scope :with_group, ->(group) { includes(user: :group).where(groups: { id: group&.id }) }
@@ -81,5 +82,9 @@ class Task < ApplicationRecord
     if image.attached?
       errors.add(:image, I18n.t('errors.messages.task.image.different_type', locale: :ja)) unless image.content_type.in?(%("image/jpeg image/png"))
     end
+  end
+
+  def tags_count_over
+    errors.add(:tag_list, I18n.t('errors.messages.task.tag.count_over', locale: :ja)) if tag_list.count > 5
   end
 end

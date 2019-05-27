@@ -29,14 +29,14 @@ end
 50.times do |n|
   case n % 5
   when 0 then
-    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.first, owner: User.first)
+    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.first, owner: User.first, tag_list: ["rails","php","js","python"])
   when 1 then
-    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.second, owner: User.fourth)
+    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.second, owner: User.fourth, tag_list: ["swift","python"])
   when 2 then
-    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.third, owner: User.fifth)
+    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.third, owner: User.fifth, tag_list: ["js"])
   when 3 then
-    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.second, owner: User.second)
+    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.second, owner: User.second, tag_list: [""])
   when 4 then
-    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.third, owner: User.third)
+    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.third, owner: User.third, tag_list: ["swift"])
   end
 end
