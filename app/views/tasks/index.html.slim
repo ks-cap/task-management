@@ -27,10 +27,6 @@ h1 = I18n.t('tasks.index.title')
         = f.label :state_eq, Task.human_attribute_name(:state), class: 'col-sm-2 col-form-label'
         .col-sm-2
           = f.select :state_eq, Task.states.keys.map { |k| [I18n.t("activerecord.enums.task.state.#{k}"), k] }, {include_blank: true},  class: 'form-control'
-      /.form-group.row
-        = f.label :tag_name_eq, Task.human_attribute_name(:tag_list), class: 'col-sm-2 col-form-label'
-        .col-sm-2
-          = f.select :tag_name_eq, Task.all_tags, {include_blank: true}, class: 'form-control'
       .form-group
         = f.submit class: 'btn btn-outline-primary'
         = link_to I18n.t('button.clear'), tasks_path, class: 'btn btn-outline-primary'
