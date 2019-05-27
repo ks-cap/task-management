@@ -12,6 +12,7 @@ ja:
         description: 詳しい説明
         deadline: 終了期限
         state: 状態
+        tag_list: タグ
         image: 画像
         owner: 作成者
         created_at: 登録日時

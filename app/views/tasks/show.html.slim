@@ -26,6 +26,9 @@ table.table.table-hover
       th= Task.human_attribute_name(:state)
       td= I18n.t("activerecord.enums.task.state.#{@task.state}")
     tr
+      th= Task.human_attribute_name(:tag_list)
+      td= render 'tasks/tag_list', tag_list: @task.tag_list
+    tr
       th= Task.human_attribute_name(:owner)
       td= @task.owner.name
     tr
