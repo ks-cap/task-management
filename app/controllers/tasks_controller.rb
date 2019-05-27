@@ -22,9 +22,7 @@ class TasksController < ApplicationController
                .page(params[:page])
                .per(TASK_DISPLAY_PER_PAGE)
 
-    #if params[:tag_name].present?
-     # @tasks = @tasks.tagged_with("#{params[:tag_name]}")
-   #end
+    @tasks = @tasks.tagged_with("#{params[:tag_name]}") if params[:tag_name].present?
 
     respond_to do |format|
       format.html
