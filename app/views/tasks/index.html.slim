@@ -31,9 +31,9 @@ h1 = I18n.t('tasks.index.title')
         = f.label :owner_id_eq, Task.human_attribute_name(:owner), class: 'col-sm-2 col-form-label'
         .col-sm-10
           = f.radio_button :owner_id_eq, '', {:checked => true}
-          | 指定なし
+          | #{I18n.t('tasks.index.no_select')}
           = f.radio_button :owner_id_eq, current_user.id
-          | 自分
+          | #{I18n.t('tasks.index.me')}
       .form-group
         = f.submit class: 'btn btn-outline-primary'
         = link_to I18n.t('button.clear'), tasks_path, class: 'btn btn-outline-primary'

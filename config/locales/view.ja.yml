@@ -4,6 +4,8 @@ ja:
     index:
       title: タスク一覧
       search: 検索
+      no_select: 指定なし
+      me: 自分
     show:
       title: タスクの詳細
     new:
