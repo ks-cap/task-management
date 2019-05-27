@@ -83,3 +83,6 @@ gem 'ransack'
 gem 'kaminari'
 
 gem 'timecop'
+
+# Tag
+gem 'acts-as-taggable-on'
