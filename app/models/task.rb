@@ -4,6 +4,7 @@ class Task < ApplicationRecord
 
   enum state: { waiting: 0, working: 1, completed: 2 }
   acts_as_taggable
+  acts_as_taggable_on :tags, :interests
 
   belongs_to :user
   belongs_to :owner, class_name: 'User'
