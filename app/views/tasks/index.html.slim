@@ -52,6 +52,7 @@ table.table.table-hover
       th= sort_link(@q, :state)
       th= Task.human_attribute_name(:tag_list)
       th= sort_link(@q, :deadline)
+      th= Task.human_attribute_name(:owner)
       th
   tboby
     - @tasks.each do |task|
@@ -60,6 +61,9 @@ table.table.table-hover
         td= I18n.t("activerecord.enums.task.state.#{task.state}")
         td= render 'tasks/tag_list', tag_list: task.tag_list
         td= l(task.deadline, format: :long)
+        td
+          - if task.owner.name == current_user.name
+            | 自分
         td
           - if task.editable?(current_user)
             = link_to I18n.t('button.edit'), edit_task_path(task), class: 'btn btn-primary mr-3'

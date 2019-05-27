@@ -32,7 +32,7 @@ class Task < ApplicationRecord
   end
 
   def self.csv_attributes
-    %w[user_id name description deadline state created_at updated_at owner_id]
+    %w[user_id name description deadline state created_at updated_at]
   end
 
   def self.generate_csv
