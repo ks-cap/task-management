@@ -28,6 +28,11 @@ h1 = I18n.t('tasks.index.title')
         .col-sm-2
           = f.select :state_eq, Task.states.map { |k, v| [I18n.t("activerecord.enums.task.state.#{k}"), v] }, {include_blank: true},  class: 'form-control'
       .form-group.row
+        = f.label :tag_list_eq, Task.human_attribute_name(:tag_list), class: 'col-sm-2 col-form-label'
+        .col-sm-2
+          /= f.select :tag_list_eq, Task.tags_on(:tags), {include_blank: true},  class: 'form-control'
+          = f.search_field :tag_list_eq, class: 'form-control'
+      .form-group.row
         = f.label :owner_id_eq, Task.human_attribute_name(:owner), class: 'col-sm-2 col-form-label'
         .col-sm-10
           = f.radio_button :owner_id_eq, '', {:checked => true}
