@@ -81,3 +81,5 @@ gem 'ransack'
 
 # Pagination
 gem 'kaminari'
+
+gem 'timecop'

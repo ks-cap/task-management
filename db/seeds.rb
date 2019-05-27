@@ -26,7 +26,7 @@ end
   end
 end
 
-100.times do |n|
+50.times do |n|
   case n % 5
   when 0 then
     FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.first, owner: User.first)

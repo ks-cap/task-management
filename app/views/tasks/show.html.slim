@@ -30,7 +30,7 @@ table.table.table-hover
       td= @task.owner.name
     tr
       th= Task.human_attribute_name(:image)
-      td= image_tag @task.image if @task.image.attached?
+      td= image_tag @task.image.variant(resize:'300x300').processed if @task.image.attached?
 
 = link_to I18n.t('button.edit'), edit_task_path, class: 'btn btn-primary mr-3'
 = link_to I18n.t('button.destroy'), @task, method: :delete, remote: true,

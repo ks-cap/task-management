@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Task < ApplicationRecord
-  # enum state: { 未着手: '未着手', '着手中': '着手中', 完了: '完了' }
+
   enum state: { waiting: 0, working: 1, completed: 2 }
   belongs_to :user
   belongs_to :owner, class_name: 'User'
@@ -16,6 +16,7 @@ class Task < ApplicationRecord
 
   scope :recent, -> { order(created_at: :desc) }
   scope :with_group, ->(group) { includes(user: :group).where(groups: { id: group&.id }) }
+  scope :expired, -> { where('deadline <= ?', Time.zone.now) }
 
   # ransack使用時の制約追加
   def self.ransackable_attributes(_auth_object = nil)

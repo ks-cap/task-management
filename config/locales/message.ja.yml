@@ -7,6 +7,7 @@ ja:
       destroy: "タスク「%{name}」を削除しました"
       destroy_check: "タスク「%{name}」を削除します。よろしいですか？"
       editable: "タスク「%{name}」の操作権限がありません"
+      expered: 期限切れのタスクがあります
       name:
         insert: タスク名を入力してください
       description:

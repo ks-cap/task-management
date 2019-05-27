@@ -18,7 +18,8 @@
   .form-group
     .col-sm-12
       = f.label :deadline
-      = f.date_select :deadline, {}, class: 'form-control date-picker', id: 'task_deadline'
+      = f.datetime_select :deadline, {include_blank: true, use_month_numbers: true, date_separator: ' / '},
+              class: 'col-sm-1 col-form-control date-picker', id: 'task_deadline'
   .form-group
     .col-sm-12
       = f.label :state
