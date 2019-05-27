@@ -3,6 +3,8 @@
 class Task < ApplicationRecord
 
   enum state: { waiting: 0, working: 1, completed: 2 }
+  acts_as_taggable
+
   belongs_to :user
   belongs_to :owner, class_name: 'User'
   has_one_attached :image
