@@ -73,6 +73,8 @@ gem 'slim-rails'
 # Using bootstrap
 gem 'bootstrap'
 
+gem 'jquery-rails'
+
 # Link URL
 gem 'rails_autolink'
 
