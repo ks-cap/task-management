@@ -20,6 +20,7 @@ html
       /.navbar-brand TaskManagement
       ul.navbar-nav.ml-auto
         = render 'layouts/header'
+        li.nav-item=  link_to I18n.t('button.signup'), new_user_path, class: 'nav-link'
         - if current_user
           li.nav-item= link_to "ユーザー名：#{current_user.name}", tasks_path, class: 'nav-link'
           /li.nav-item= link_to I18n.t('tasks.index.title'), tasks_path, class: 'nav-link'

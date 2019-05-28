@@ -9,5 +9,6 @@ ja:
     import: インポート
     export: エクスポート
     list: 一覧
+    signup: 新規作成
     login: ログイン
     logout: ログアウト
