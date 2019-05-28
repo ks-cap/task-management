@@ -1,0 +1,27 @@
+h1 = I18n.t('users.index.title')
+
+= link_to I18n.t('button.new'), new_user_path, class: 'btn btn-primary'
+
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= User.human_attribute_name(:name)
+      th= User.human_attribute_name(:email)
+      th= User.human_attribute_name(:group)
+      th= User.human_attribute_name(:admin)
+      th= User.human_attribute_name(:created_at)
+      th= User.human_attribute_name(:updated_at)
+      th
+  tbody
+    - @users.each do |user|
+      tr id="user-#{user.id}"
+        td= link_to user.name, user_path(user)
+        td= user.email
+        td= user.group&.name
+        td= user.admin? ? I18n.t('users.index.available') : I18n.t('users.index.not_available')
+        td= l(user.created_at, format: :long)
+        td= l(user.updated_at, format: :long)
+        td
+          - if user.id == current_user.id
+            = link_to I18n.t('button.edit'), edit_user_path(user), class: 'btn btn-primary mr-3'

@@ -1,0 +1,34 @@
+h1 = I18n.t('users.show.title')
+
+.nav.justify-content-end
+  = link_to I18n.t('button.list'), users_path, class: 'nav-link'
+
+table.table.table-hover
+  tbody
+    tr id="user-#{@user.id}"
+      th= User.human_attribute_name(:id)
+      td= @user.id
+    tr
+      th= User.human_attribute_name(:name)
+      td= @user.name
+    tr
+      th= User.human_attribute_name(:email)
+      td= @user.email
+    tr
+      th= User.human_attribute_name(:group)
+      td= @user.group&.name
+    tr
+      th= User.human_attribute_name(:admin)
+      td= @user.admin? ? I18n.t('users.index.yes') : I18n.t('users.index.no')
+    tr
+      th= User.human_attribute_name(:image)
+      td= image_tag @user.image.variant(resize: '300x300').processed if @user.image.attached?
+    tr
+      th= User.human_attribute_name(:created_at)
+      td= l(@user.created_at, format: :long)
+    tr
+      th= User.human_attribute_name(:updated_at)
+      td= l(@user.updated_at, format: :long)
+
+- if @user.id == current_user.id
+  = link_to I18n.t('button.edit'), edit_user_path, class: 'btn btn-primary mr-3'
