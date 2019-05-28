@@ -11,24 +11,24 @@ html
     /! drawer.css
     link href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css" rel="stylesheet"
     /! jquery & iScroll
-    script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"
+    /script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"
     script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"
     /! drawer.js
     script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"
 
   body.drawer.drawer--left
     = render 'layouts/header'
-    /.app-title.navbar.navbar-expand-md.navbar-light.bg-light
-      .navbar-brand TaskManagement
+    .app-title.navbar.navbar-expand-md.navbar-light.bg-light
+      /.navbar-brand TaskManagement
 
       ul.navbar-nav.ml-auto
         - if current_user
           li.nav-item= link_to "ユーザー名：#{current_user.name}", tasks_path, class: 'nav-link'
-          li.nav-item= link_to I18n.t('tasks.index.title'), tasks_path, class: 'nav-link'
-          - if current_user.admin?
+          /li.nav-item= link_to I18n.t('tasks.index.title'), tasks_path, class: 'nav-link'
+          /- if current_user.admin?
             li.nav-item= link_to I18n.t('users.index.title'), admin_users_path, class: 'nav-link'
             li.nav-item= link_to I18n.t('groups.index.title'), admin_groups_path, class: 'nav-link'
-          li.nav-item= link_to I18n.t('button.logout'), logout_path, method: :delete, class: 'nav-link'
+          /li.nav-item= link_to I18n.t('button.logout'), logout_path, method: :delete, class: 'nav-link'
         - else
           li.nav-item= link_to I18n.t('button.login'), login_path, class: 'nav-link'
     .container

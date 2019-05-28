@@ -5,7 +5,11 @@ body
       span.drawer-hamburger-icon
     nav.drawer-nav role="navigation"
       ul.drawer-menu
-        li
-          a.drawer-brand href="#"  Brand
-        li= link_to 'Nav1', '#', class: 'drawer-menu-item'
-        li= link_to 'Nav2', '#', class: 'drawer-menu-item'
+        - if current_user
+          li.drawer-brand.nav-item= link_to "#{current_user.name}", tasks_path, class: 'nav-link'
+          li.nav-item= link_to I18n.t('tasks.index.title'), tasks_path, class: 'nav-link'
+          li.nav-item= link_to I18n.t('users.index.title'), admin_users_path, class: 'nav-link'
+          li.nav-item= link_to I18n.t('groups.index.title'), admin_groups_path, class: 'nav-link'
+          li.nav-item= link_to I18n.t('button.logout'), logout_path, method: :delete, class: 'nav-link'
+        - else
+          li.drawer-brand.nav-item= link_to I18n.t('button.login'), login_path, class: 'nav-link'
