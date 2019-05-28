@@ -5,9 +5,6 @@ h1 = I18n.t('users.show.title')
 
 table.table.table-hover
   tbody
-    tr id="user-#{@user.id}"
-      th= User.human_attribute_name(:id)
-      td= @user.id
     tr
       th= User.human_attribute_name(:name)
       td= @user.name

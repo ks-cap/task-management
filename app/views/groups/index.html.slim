@@ -4,7 +4,6 @@ h1 = I18n.t('groups.index.title')
   table.table.table-hover
     thead.thead-default
       tr
-        th= Group.human_attribute_name(:id)
         th= Group.human_attribute_name(:name)
         th= Group.human_attribute_name(:updated_at)
         th= Group.human_attribute_name(:created_at)
@@ -12,7 +11,6 @@ h1 = I18n.t('groups.index.title')
     tbody
       - @groups.each do |group|
         tr
-          td= group.id
           td= link_to group.name, group_path(group)
           td= l(group.updated_at, format: :long)
           td= l(group.created_at, format: :long)

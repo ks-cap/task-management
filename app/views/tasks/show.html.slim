@@ -4,9 +4,6 @@ h1 = I18n.t('tasks.show.title')
   = link_to I18n.t('button.list'), tasks_path, class: 'nav-link'
 table.table.table-hover
   tbody
-    tr id="task-#{@task.id}"
-      th= Task.human_attribute_name(:id)
-      td= @task.id
     tr
       th= Task.human_attribute_name(:name)
       td= @task.name

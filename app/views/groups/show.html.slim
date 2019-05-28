@@ -6,9 +6,6 @@ h1 = I18n.t('groups.show.title')
 .mb-3
   table.table.table-hover
     tbody
-      tr id="group-#{@group.id}"
-        th= Group.human_attribute_name(:name)
-        td= @group.name
       tr
         td= Group.human_attribute_name(:owner)
         td= @group.owner.name
