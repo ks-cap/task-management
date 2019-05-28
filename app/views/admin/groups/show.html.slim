@@ -10,6 +10,9 @@ h1 = I18n.t('groups.show.title')
         th= Group.human_attribute_name(:name)
         td= @group.name
       tr
+        td= Group.human_attribute_name(:owner)
+        td= @group.owner.name
+      tr
         th= Group.human_attribute_name(:updated_at)
         td= l(@group.updated_at, format: :long)
       tr

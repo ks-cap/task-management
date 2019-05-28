@@ -21,6 +21,7 @@ class Admin::GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+    @group.owner = current_user
     if @group.save
       flash[:success] = I18n.t('message.tasks.create', name: @group.name)
       redirect_to admin_group_url(@group)

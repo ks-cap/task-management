@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_many :tasks
   has_many :owner_tasks, class_name: 'Task', foreign_key: :owner_id
+  has_many :owner_groups, class_name: 'Group', foreign_key: :owner_id
   has_one :user_group, dependent: :destroy
   has_one :group, through: :user_group
   has_one_attached :image
