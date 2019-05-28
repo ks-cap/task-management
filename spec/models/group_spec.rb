@@ -3,8 +3,9 @@
 require 'rails_helper'
 
 describe Group, type: :model do
+  let!(:user) { FactoryBot.create(:user) }
   describe 'TaskModelに関する処理' do
-    let(:group) { FactoryBot.create(:group) }
+    let(:group) { FactoryBot.create(:group, owner:user) }
     subject { group.valid? }
 
     context 'エラーとならない場合' do
@@ -28,7 +29,7 @@ describe Group, type: :model do
 
   describe 'アソシエーション' do
     let!(:user) { FactoryBot.create(:user) }
-    let!(:group) { FactoryBot.create(:group) }
+    let!(:group) { FactoryBot.create(:group, owner: user) }
     let!(:user_group) { FactoryBot.create(:user_group, group: group, user: user) }
 
     it '紐付くユーザーが取得できる' do
