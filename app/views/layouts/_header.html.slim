@@ -1,0 +1,11 @@
+body
+  header role="banner"
+    button.drawer-toggle.drawer-hamburger type="button"
+      span.sr-only toggle navigation
+      span.drawer-hamburger-icon
+    nav.drawer-nav role="navigation"
+      ul.drawer-menu
+        li
+          a.drawer-brand href="#"  Brand
+        li= link_to 'Nav1', '#', class: 'drawer-menu-item'
+        li= link_to 'Nav2', '#', class: 'drawer-menu-item'
