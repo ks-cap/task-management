@@ -12,7 +12,7 @@ User.find_or_create_by!(email: 'admin@example.com') do |user|
 end
 
 3.times do |n|
-  FactoryBot.create(:group, name: "test_group_#{n}")
+  FactoryBot.create(:group, name: "test_group_#{n}", owner: User.first)
 end
 
 5.times do |n|

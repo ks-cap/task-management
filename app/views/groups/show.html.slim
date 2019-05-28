@@ -19,8 +19,8 @@ h1 = I18n.t('groups.show.title')
         th= Group.human_attribute_name(:created_at)
         td= l(@group.created_at, format: :long)
 
-= render partial: 'user_list', locals: {group: @group} if @group.users.present?
-= link_to I18n.t('button.edit'), admin_group_path(@group), class: 'btn btn-primary mr-3'
-= link_to I18n.t('button.destroy'), [:admin, @group], method: :delete,
-        data: {confirm: I18n.t('message.groups.destroy_check', name: @group.name)},
-        class: 'btn btn-danger delete'
+- if @group.owner.id == current_user.id
+  = link_to I18n.t('button.edit'), group_path(@group), class: 'btn btn-primary mr-3'
+  = link_to I18n.t('button.destroy'), group_path(@group), method: :delete,
+          data: { confirm: I18n.t('message.groups.destroy_check', name: @group.name) },
+          class: 'btn btn-danger delete'

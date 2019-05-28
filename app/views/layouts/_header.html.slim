@@ -13,7 +13,7 @@ body
             li.nav-item= link_to I18n.t('groups.index.title'), admin_groups_path, class: 'nav-link'
           - else
             li.nav-item= link_to I18n.t('users.index.title'), users_path, class: 'nav-link'
-            li.nav-item= link_to I18n.t('groups.index.title'), admin_groups_path, class: 'nav-link'
+            li.nav-item= link_to I18n.t('groups.index.title'), groups_path, class: 'nav-link'
           li.nav-item= link_to I18n.t('button.logout'), logout_path, method: :delete, class: 'nav-link'
         - else
           li.drawer-brand.nav-item= link_to I18n.t('button.login'), login_path, class: 'nav-link'
