@@ -1,2 +1,6 @@
-h1 Groups#new
-p Find me in app/views/groups/new.html.slim
+h1 = I18n.t('groups.new.title')
+
+.nav.justify-content-end
+  = link_to I18n.t('button.list'), groups_path, class: 'nav-link'
+
+= render partial: 'form', locals: { group: @group }

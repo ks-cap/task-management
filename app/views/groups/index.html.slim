@@ -13,14 +13,15 @@ h1 = I18n.t('groups.index.title')
       - @groups.each do |group|
         tr
           td= group.id
-          td= link_to group.name, [:admin, group]
+          td= link_to group.name, group_path(group)
           td= l(group.updated_at, format: :long)
           td= l(group.created_at, format: :long)
           td
-            = link_to I18n.t('button.edit'), edit_admin_group_path(group), class: 'btn btn-primary'
-            = link_to I18n.t('button.destroy'), admin_group_path(group), method: :delete,
-                    data: {confirm: I18n.t('message.groups.destroy_check', name: group.name)},
-                    class: 'btn btn-danger'
+            - if group.owner.id == current_user.id
+              = link_to I18n.t('button.edit'), edit_admin_group_path(group), class: 'btn btn-primary'
+              = link_to I18n.t('button.destroy'), admin_group_path(group), method: :delete,
+                      data: { confirm: I18n.t('message.groups.destroy_check', name: group.name) },
+                      class: 'btn btn-danger'
 
 = link_to I18n.t('button.new'), new_admin_group_path, class: 'btn btn-success'
 

@@ -23,7 +23,7 @@ class Admin::GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.owner = current_user
     if @group.save
-      flash[:success] = I18n.t('message.tasks.create', name: @group.name)
+      flash[:success] = I18n.t('message.groups.create', name: @group.name)
       redirect_to admin_group_url(@group)
     else
       render :new
@@ -32,7 +32,7 @@ class Admin::GroupsController < ApplicationController
 
   def update
     if @group.update
-      flash[:success] = I18n.t('message.tasks.update', name: @group.name)
+      flash[:success] = I18n.t('message.groups.update', name: @group.name)
       redirect_to admin_group_url(@group)
     else
       render :edit
@@ -41,7 +41,7 @@ class Admin::GroupsController < ApplicationController
 
   def destroy
     @group.destroy
-    flash[:danger] = I18n.t('message.tasks.destroy', name: @group.name)
+    flash[:danger] = I18n.t('message.groups.destroy', name: @group.name)
     redirect_to admin_groups_url
   end
 
