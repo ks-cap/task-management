@@ -6,7 +6,7 @@ body
     nav.drawer-nav role="navigation"
       ul.drawer-menu
         - if current_user
-          li.drawer-brand.nav-item= link_to "#{current_user.name}", tasks_path, class: 'nav-link'
+          li.drawer-brand #{current_user.name}
           li.nav-item= link_to I18n.t('tasks.index.title'), tasks_path, class: 'nav-link'
           - if current_user.admin?
             li.nav-item= link_to I18n.t('users.index.title'), admin_users_path, class: 'nav-link'

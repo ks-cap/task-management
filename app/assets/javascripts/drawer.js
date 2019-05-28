@@ -1,19 +1,12 @@
 $(document).ready(function() {
-    $('.drawer').drawer({
-        class: {
-            nav: 'drawer-nav',
-            toggle: 'drawer-toggle',
-            overlay: 'drawer-overlay',
-            open: 'drawer-open',
-            close: 'drawer-close',
-            dropdown: 'drawer-dropdown'
-        },
-        iscroll: {
-            // Configuring the iScroll
-            // https://github.com/cubiq/iscroll#configuring-the-iscroll
-            mouseWheel: true,
-            preventDefault: false
-        },
-        showOverlay: true
+    $('.drawer').drawer();
+    // ドロワーメニューが開いたとき
+    $('.drawer').on('drawer.opened', function(){
+        alert('ドロワーが開きました');
+    });
+
+    // ドロワーメニューが閉じたとき
+    $('.drawer').on('drawer.closed', function(){
+        alert('ドロワーが閉じられました');
     });
 });
