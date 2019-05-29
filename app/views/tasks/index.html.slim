@@ -1,58 +1,59 @@
 = render partial: 'expered_alert', locals: {expired_tasks: @expired_tasks} if @expired_tasks.present?
 
-h1 = I18n.t('tasks.index.title')
+/h1 = I18n.t('tasks.index.title')
 
-.mb-3
+.mt-3
   .card
     .card-body
       #calendar.mb-3
 
-.card
-  .card-header
-    h4 = I18n.t('tasks.index.search')
-  .card-body
-    = search_form_for @q, class: 'mb-3' do |f|
-      .form-group.row
-        = f.label :name_cont, Task.human_attribute_name(:name), class: 'col-sm-2 col-form-label'
-        .col-sm-10
-          = f.search_field :name_cont, class: 'form-control', placeholder: I18n.t('message.tasks.name.insert')
-      .form-group.row
-        = f.label :created_at, Task.human_attribute_name(:created_at), class: 'col-sm-2 col-form-label'
-        .col-sm-10
-          = f.date_select :created_at_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
-          | 〜
-          = f.date_select :created_at_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
-      .form-group.row
-        = f.label :startline, Task.human_attribute_name(:startline), class: 'col-sm-2 col-form-label'
-        .col-sm-10
-          = f.date_select :startline_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
-          | 〜
-          = f.date_select :startline_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
-      .form-group.row
-        = f.label :deadline, Task.human_attribute_name(:deadline), class: 'col-sm-2 col-form-label'
-        .col-sm-10
-          = f.date_select :deadline_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
-          | 〜
-          = f.date_select :deadline_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
-      .form-group.row
-        = f.label :state_eq, Task.human_attribute_name(:state), class: 'col-sm-2 col-form-label'
-        .col-sm-2
-          = f.select :state_eq, Task.states.map { |k, v| [I18n.t("activerecord.enums.task.state.#{k}"), v] }, {include_blank: true},  class: 'form-control'
-      .form-group.row
-        = f.label :tag_list_eq, Task.human_attribute_name(:tag_list), class: 'col-sm-2 col-form-label'
-        .col-sm-2
-          /= f.select :tag_list_eq, Task.tags_on(:tags), {include_blank: true},  class: 'form-control'
-          = f.search_field :tag_list_eq, class: 'form-control'
-      .form-group.row
-        = f.label :owner_id_eq, Task.human_attribute_name(:owner), class: 'col-sm-2 col-form-label'
-        .col-sm-10
-          = f.radio_button :owner_id_eq, '', {:checked => true}
-          | #{I18n.t('tasks.index.no_select')}
-          = f.radio_button :owner_id_eq, current_user.id
-          | #{I18n.t('tasks.index.me')}
-      .form-group
-        = f.submit class: 'btn btn-outline-primary'
-        = link_to I18n.t('button.clear'), tasks_path, class: 'btn btn-outline-primary'
+.mt-3
+  .card
+    .card-header
+      h4 = I18n.t('tasks.index.search')
+    .card-body
+      = search_form_for @q, class: 'mb-3' do |f|
+        .form-group.row
+          = f.label :name_cont, Task.human_attribute_name(:name), class: 'col-sm-2 col-form-label'
+          .col-sm-10
+            = f.search_field :name_cont, class: 'form-control', placeholder: I18n.t('message.tasks.name.insert')
+        .form-group.row
+          = f.label :created_at, Task.human_attribute_name(:created_at), class: 'col-sm-2 col-form-label'
+          .col-sm-10
+            = f.date_select :created_at_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
+            | 〜
+            = f.date_select :created_at_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
+        .form-group.row
+          = f.label :startline, Task.human_attribute_name(:startline), class: 'col-sm-2 col-form-label'
+          .col-sm-10
+            = f.date_select :startline_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
+            | 〜
+            = f.date_select :startline_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
+        .form-group.row
+          = f.label :deadline, Task.human_attribute_name(:deadline), class: 'col-sm-2 col-form-label'
+          .col-sm-10
+            = f.date_select :deadline_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
+            | 〜
+            = f.date_select :deadline_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
+        .form-group.row
+          = f.label :state_eq, Task.human_attribute_name(:state), class: 'col-sm-2 col-form-label'
+          .col-sm-2
+            = f.select :state_eq, Task.states.map { |k, v| [I18n.t("activerecord.enums.task.state.#{k}"), v] }, {include_blank: true},  class: 'form-control'
+        .form-group.row
+          = f.label :tag_list_eq, Task.human_attribute_name(:tag_list), class: 'col-sm-2 col-form-label'
+          .col-sm-2
+            /= f.select :tag_list_eq, Task.tags_on(:tags), {include_blank: true},  class: 'form-control'
+            = f.search_field :tag_list_eq, class: 'form-control'
+        .form-group.row
+          = f.label :owner_id_eq, Task.human_attribute_name(:owner), class: 'col-sm-2 col-form-label'
+          .col-sm-10
+            = f.radio_button :owner_id_eq, '', {:checked => true}
+            | #{I18n.t('tasks.index.no_select')}
+            = f.radio_button :owner_id_eq, current_user.id
+            | #{I18n.t('tasks.index.me')}
+        .form-group
+          = f.submit class: 'btn btn-outline-primary'
+          = link_to I18n.t('button.clear'), tasks_path, class: 'btn btn-outline-primary'
 
 .form-group.row
   .col-sm-10
@@ -63,10 +64,6 @@ h1 = I18n.t('tasks.index.title')
     = form_tag tasks_import_csvs_path, multipart: true, class: 'mb-3' do
       = file_field_tag :file
       = submit_tag I18n.t('button.import'), class: 'btn btn-outline-primary'
-
-.mb-3
-  = paginate @tasks
-  = page_entries_info @tasks
 
 table.table.table-hover
   thead.thead-default
@@ -95,3 +92,6 @@ table.table.table-hover
             = link_to I18n.t('button.destroy'), task, method: :delete, remote: false,
                     data: { confirm: I18n.t('message.tasks.destroy_check', name: task.name) },
                     class: 'btn btn-danger delete'
+.mb-3
+  = paginate @tasks
+  = page_entries_info @tasks
