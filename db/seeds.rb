@@ -23,7 +23,7 @@ for i in 2..3 do
   FactoryBot.create(:user, name: "test_user_#{i}", email: "test_email_#{i}@example.com", group: Group.second)
 end
 
-30.times do |n|
+10.times do |n|
   case n % 4
   when 0 then
     FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.first, owner: User.first, tag_list: ["rails","php","js","python"])
