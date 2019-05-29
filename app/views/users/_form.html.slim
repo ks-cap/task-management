@@ -6,7 +6,7 @@
 = form_with model: user, local: true do |f|
   .form-group
     = f.label :name, User.human_attribute_name(:name)
-    = f.text_field :name, class: 'form-control', placeholder: I18n.t('message.tasks.name.insert')
+    = f.text_field :name, class: 'form-control', placeholder: I18n.t('message.users.name.insert')
   .form-group
     = f.label :email, User.human_attribute_name(:email)
     = f.text_field :email, class: 'form-control', placeholder: I18n.t('message.users.mail.insert')

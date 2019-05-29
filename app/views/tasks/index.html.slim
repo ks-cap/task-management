@@ -12,7 +12,7 @@
           = f.label :name_cont, Task.human_attribute_name(:name), class: 'col-sm-2 col-form-label'
           .col-sm-10
             = f.search_field :name_cont, class: 'form-control', placeholder: I18n.t('message.tasks.name.insert')
-        .form-group.row
+        /.form-group.row
           = f.label :created_at, Task.human_attribute_name(:created_at), class: 'col-sm-2 col-form-label'
           .col-sm-10
             = f.date_select :created_at_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
@@ -75,8 +75,8 @@
               td= link_to task.name, task_path(task)
               td= I18n.t("activerecord.enums.task.state.#{task.state}")
               td= render 'tasks/tag_list', tag_list: task.tag_list
-              td= l(task.startline, format: :long)
-              td= l(task.deadline, format: :long)
+              td= l(task.startline, format: :long) if task.startline.present?
+              td= l(task.deadline, format: :long) if task.deadline.present?
               td
                 - if task.owner.name == current_user.name
                   | 自分

@@ -12,10 +12,14 @@ table.table.table-hover
       td= auto_link(simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div"))
     tr
       th= Task.human_attribute_name(:startline)
-      td= l(@task.startline, format: :long)
+      td
+        - if @task.startline.present?
+          = l(@task.startline, format: :long)
     tr
       th= Task.human_attribute_name(:deadline)
-      td= l(@task.deadline, format: :long)
+      td
+        - if @task.deadline.present?
+          = l(@task.deadline, format: :long)
     tr
       th= Task.human_attribute_name(:state)
       td= I18n.t("activerecord.enums.task.state.#{@task.state}")
