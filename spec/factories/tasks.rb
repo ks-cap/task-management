@@ -6,7 +6,8 @@ FactoryBot.define do
 
     name { 'Task title' }
     description { 'Task description' }
-    deadline { Time.current.since(1.day) }
-    state { Task.states[0] }
+    startline { Time.current + Random.new.rand((24*30)*60*60) }
+    deadline { startline + Random.new.rand((24*30)*60*60) }
+    state { 0 }
   end
 end

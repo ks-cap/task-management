@@ -54,7 +54,7 @@ describe Task, type: :model do
   describe 'タスク検索機能' do
     let!(:user) { FactoryBot.create(:user) }
     let!(:task1) { FactoryBot.create(:task, name: 'タイトル_1', owner: user) }
-    let!(:task2) { FactoryBot.create(:task, name: 'タイトル_10', state: Task.states[:完了], owner: user) }
+    let!(:task2) { FactoryBot.create(:task, name: 'タイトル_10', state: 2, owner: user) }
     let!(:task3) { FactoryBot.create(:task, name: 'タイトル_2', owner: user) }
     let!(:task4) { FactoryBot.create(:task, name: 'タイトル_11', owner: user) }
 

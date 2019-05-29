@@ -141,6 +141,8 @@ ja:
         image:
           no_file: ファイルが存在しません
           different_type: はJPEGとPNG以外添付できません
+        tag:
+          count_over: は5つまでしか設定できません
     template:
       body: 次の項目を確認してください
       header:

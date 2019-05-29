@@ -4,9 +4,6 @@ h1 = I18n.t('tasks.show.title')
   = link_to I18n.t('button.list'), tasks_path, class: 'nav-link'
 table.table.table-hover
   tbody
-    tr id="task-#{@task.id}"
-      th= Task.human_attribute_name(:id)
-      td= @task.id
     tr
       th= Task.human_attribute_name(:name)
       td= @task.name
@@ -14,23 +11,29 @@ table.table.table-hover
       th= Task.human_attribute_name(:description)
       td= auto_link(simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div"))
     tr
+      th= Task.human_attribute_name(:startline)
+      td= l(@task.startline, format: :long)
+    tr
       th= Task.human_attribute_name(:deadline)
       td= l(@task.deadline, format: :long)
+    tr
+      th= Task.human_attribute_name(:state)
+      td= I18n.t("activerecord.enums.task.state.#{@task.state}")
+    tr
+      th= Task.human_attribute_name(:tag_list)
+      td= render 'tasks/tag_list', tag_list: @task.tag_list
+    tr
+      th= Task.human_attribute_name(:image)
+      td= image_tag @task.image.variant(resize:'300x300').processed if @task.image.attached?
+    tr
+      th= Task.human_attribute_name(:owner)
+      td= @task.owner.name
     tr
       th= Task.human_attribute_name(:created_at)
       td= l(@task.created_at, format: :long)
     tr
       th= Task.human_attribute_name(:updated_at)
       td= l(@task.updated_at, format: :long)
-    tr
-      th= Task.human_attribute_name(:state)
-      td= I18n.t("activerecord.enums.task.state.#{@task.state}")
-    tr
-      th= Task.human_attribute_name(:owner)
-      td= @task.owner.name
-    tr
-      th= Task.human_attribute_name(:image)
-      td= image_tag @task.image.variant(resize:'300x300').processed if @task.image.attached?
 
 = link_to I18n.t('button.edit'), edit_task_path, class: 'btn btn-primary mr-3'
 = link_to I18n.t('button.destroy'), @task, method: :delete, remote: true,

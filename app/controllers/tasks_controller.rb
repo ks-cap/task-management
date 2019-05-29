@@ -3,7 +3,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
 
-  TASK_DISPLAY_PER_PAGE = 25
+  TASK_DISPLAY_PER_PAGE = 10
 
   def index
     # グループに属している場合はグループに関連するタスク表示
@@ -22,13 +22,17 @@ class TasksController < ApplicationController
                .page(params[:page])
                .per(TASK_DISPLAY_PER_PAGE)
 
+    @tasks = @tasks.tagged_with("#{params[:tag_name]}") if params[:tag_name].present?
+
     respond_to do |format|
       format.html
+      format.json
       format.csv do
         send_data @tasks.generate_csv,
                   filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv"
       end
     end
+
   end
 
   def show; end
@@ -70,7 +74,7 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task)
-          .permit(:name, :description, :deadline, :state, :image)
+          .permit(:name, :description, :startline, :deadline, :state, :image, :tag_list)
   end
 
   def set_task

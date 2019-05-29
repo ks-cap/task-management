@@ -3,6 +3,9 @@
 class Task < ApplicationRecord
 
   enum state: { waiting: 0, working: 1, completed: 2 }
+  acts_as_taggable
+  acts_as_taggable_on :tags, :interests
+
   belongs_to :user
   belongs_to :owner, class_name: 'User'
   has_one_attached :image
@@ -13,6 +16,7 @@ class Task < ApplicationRecord
   validate :validate_name_not_including_comma
   validate :deadline_cannot_be_set_before_now, if: -> { deadline.present? }
   validate :image_type
+  validate :tags_count_over
 
   scope :recent, -> { order(created_at: :desc) }
   scope :with_group, ->(group) { includes(user: :group).where(groups: { id: group&.id }) }
@@ -20,15 +24,15 @@ class Task < ApplicationRecord
 
   # ransack使用時の制約追加
   def self.ransackable_attributes(_auth_object = nil)
-    %w[name created_at deadline state]
+    %w[name created_at startline deadline state owner_id tag_list_eq]
   end
 
   def self.ransackable_associations(_auth_object = nil)
-    []
+    %w[user tags]
   end
 
   def self.csv_attributes
-    %w[user_id name description deadline state created_at updated_at owner_id]
+    %w[user_id name description tag_list startline deadline state created_at updated_at owner_id]
   end
 
   def self.generate_csv
@@ -78,5 +82,9 @@ class Task < ApplicationRecord
     if image.attached?
       errors.add(:image, I18n.t('errors.messages.task.image.different_type', locale: :ja)) unless image.content_type.in?(%("image/jpeg image/png"))
     end
+  end
+
+  def tags_count_over
+    errors.add(:tag_list, I18n.t('errors.messages.task.tag.count_over', locale: :ja)) if tag_list.count > 5
   end
 end
