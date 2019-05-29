@@ -10,7 +10,8 @@ ja:
         id: ID
         name: 名称
         description: 詳しい説明
-        deadline: 終了期限
+        startline: 開始日時
+        deadline: 終了日時
         state: 状態
         tag_list: タグ
         image: 画像

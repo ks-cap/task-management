@@ -18,6 +18,12 @@ h1 = I18n.t('tasks.index.title')
           | 〜
           = f.date_select :created_at_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
       .form-group.row
+        = f.label :startline, Task.human_attribute_name(:startline), class: 'col-sm-2 col-form-label'
+        .col-sm-10
+          = f.date_select :startline_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
+          | 〜
+          = f.date_select :startline_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
+      .form-group.row
         = f.label :deadline, Task.human_attribute_name(:deadline), class: 'col-sm-2 col-form-label'
         .col-sm-10
           = f.date_select :deadline_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "col-sm-1 col-form-control"
@@ -63,6 +69,7 @@ table.table.table-hover
       th= sort_link(@q, :name)
       th= sort_link(@q, :state)
       th= Task.human_attribute_name(:tag_list)
+      th= sort_link(@q, :startline)
       th= sort_link(@q, :deadline)
       th= Task.human_attribute_name(:owner)
       th
@@ -72,6 +79,7 @@ table.table.table-hover
         td= link_to task.name, task_path(task)
         td= I18n.t("activerecord.enums.task.state.#{task.state}")
         td= render 'tasks/tag_list', tag_list: task.tag_list
+        td= l(task.startline, format: :long)
         td= l(task.deadline, format: :long)
         td
           - if task.owner.name == current_user.name

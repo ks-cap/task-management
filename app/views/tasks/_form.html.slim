@@ -17,6 +17,11 @@
               placeholder: I18n.t('message.tasks.description.insert')
   .form-group
     .col-sm-12
+      = f.label :startline
+      = f.datetime_select :startline, {include_blank: true, use_month_numbers: true, date_separator: ' / '},
+              class: 'col-sm-1 col-form-control date-picker', id: 'task_startline'
+  .form-group
+    .col-sm-12
       = f.label :deadline
       = f.datetime_select :deadline, {include_blank: true, use_month_numbers: true, date_separator: ' / '},
               class: 'col-sm-1 col-form-control date-picker', id: 'task_deadline'

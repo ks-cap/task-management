@@ -11,6 +11,9 @@ table.table.table-hover
       th= Task.human_attribute_name(:description)
       td= auto_link(simple_format(h(@task.description), {}, sanitize: false, wrapper_tag: "div"))
     tr
+      th= Task.human_attribute_name(:startline)
+      td= l(@task.startline, format: :long)
+    tr
       th= Task.human_attribute_name(:deadline)
       td= l(@task.deadline, format: :long)
     tr

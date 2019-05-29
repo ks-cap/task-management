@@ -6,6 +6,7 @@ FactoryBot.define do
 
     name { 'Task title' }
     description { 'Task description' }
+    startline { Time.current }
     deadline { Time.current.since(1.day) }
     state { 0 }
   end
