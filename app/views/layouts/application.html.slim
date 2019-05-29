@@ -5,8 +5,8 @@ html
       | TaskManagement
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
     /! drawer.css
     link href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css" rel="stylesheet" /
     /! jquery & iScroll
@@ -17,24 +17,23 @@ html
 
   body.drawer.drawer--left style="padding-top:4.5rem;"
     .app-title.navbar.navbar-expand-md.navbar-light.bg-light.fixed-top
-      .navbar-brand= link_to "TaskManagement", tasks_path, class: 'nav-link'
       ul.navbar-nav.ml-auto
-        /= render 'layouts/header'
+        = render 'layouts/header'
         /form.form-inline
           input.form-control.mr-sm-2 aria-label="検索..." placeholder="検索..." type="search" /
           button.btn.btn-outline-success.my-2.my-sm-0 type="submit"  検索
-        li.nav-item=  link_to I18n.t('button.signup'), new_user_path, class: 'nav-link' unless current_user
+        li.nav-item= link_to I18n.t('button.signup'), new_user_path, class: 'nav-link' unless current_user
         - if current_user
           li.nav-item= link_to "ユーザー名：#{current_user.name}", tasks_path, class: 'nav-link'
-          li.nav-item= link_to I18n.t('tasks.index.title'), tasks_path, class: 'nav-link'
-          li.nav-item= link_to I18n.t('calendars.index.title'), calendars_path, class: 'nav-link'
-          - if current_user.admin?
+          /li.nav-item= link_to I18n.t('tasks.index.title'), tasks_path, class: 'nav-link'
+          /li.nav-item= link_to I18n.t('calendars.index.title'), calendars_path, class: 'nav-link'
+          /- if current_user.admin?
             li.nav-item= link_to I18n.t('users.index.title'), admin_users_path, class: 'nav-link'
             li.nav-item= link_to I18n.t('groups.index.title'), admin_groups_path, class: 'nav-link'
-          - else
+          /- else
             li.nav-item= link_to I18n.t('users.index.title'), users_path, class: 'nav-link'
             li.nav-item= link_to I18n.t('groups.index.title'), groups_path, class: 'nav-link'
-          li.nav-item= link_to I18n.t('button.logout'), logout_path, method: :delete, class: 'nav-link'
+          /li.nav-item= link_to I18n.t('button.logout'), logout_path, method: :delete, class: 'nav-link'
         - else
           li.nav-item= link_to I18n.t('button.login'), login_path, class: 'nav-link'
     .container
