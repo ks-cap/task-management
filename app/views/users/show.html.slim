@@ -16,7 +16,7 @@ table.table.table-hover
       td= @user.group&.name
     tr
       th= User.human_attribute_name(:admin)
-      td= @user.admin? ? I18n.t('users.index.yes') : I18n.t('users.index.no')
+      td= @user.admin? ? I18n.t('users.index.available') : I18n.t('users.index.not_available')
     tr
       th= User.human_attribute_name(:image)
       td= image_tag @user.image.variant(resize: '300x300').processed if @user.image.attached?
