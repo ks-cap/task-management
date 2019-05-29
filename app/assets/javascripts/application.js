@@ -18,3 +18,39 @@
 //= require fullcalendar
 //= require fullcalendar/lang/ja
 //= require_tree .
+
+
+$(function () {
+    $("#calendar").fullCalendar({
+        //ヘッダーの設定
+        header: {
+            left: "today month,basicWeek",
+                center: "title",
+                right: "prev next"
+        },
+        editable: true, // イベントを編集するか
+            allDaySlot: false, // 終日表示の枠を表示するか
+            eventDurationEditable: false, // イベント期間をドラッグしで変更するかどうか
+            slotEventOverlap: false, // イベントを重ねて表示するか
+            selectable: true,
+            selectHelper: true,
+            select: function(start, end, allDay) {
+            日の枠内を選択したときの処理;
+        },
+        eventClick: function(calEvent, jsEvent, view) {
+            イベントをクリックしたときの処理;
+        },
+        droppable: true, // イベントをドラッグできるかどうか
+        events: '/tasks.json'
+        /*events: [
+            {
+                title: "イベント",
+                start: "2019-02-14"
+            },
+            {
+                title: "イベント2",
+                start: "2019-02-15"
+            },
+        ]*/
+    });
+});

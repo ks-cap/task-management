@@ -24,13 +24,14 @@ class TasksController < ApplicationController
 
     @tasks = @tasks.tagged_with("#{params[:tag_name]}") if params[:tag_name].present?
 
-    respond_to do |format|
-      format.html
-      format.csv do
-        send_data @tasks.generate_csv,
-                  filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv"
-      end
-    end
+    #respond_to do |format|
+      #format.html
+      #format.csv do
+        #send_data @tasks.generate_csv,
+                  #filename: "tasks-#{Time.zone.now.strftime('%Y%m%d%S')}.csv"
+      #end
+    #end
+
   end
 
   def show; end
