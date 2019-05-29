@@ -1,6 +1,6 @@
-h1 タスクの新規登録
+h1 = I18n.t('tasks.new.title')
 
 .nav.justify-content-end
-  = link_to '一覧', tasks_path, class: 'nav-link'
+  = link_to I18n.t('button.list'), tasks_path, class: 'nav-link'
 
-= render partial: 'form', locals: {task: @task}
+= render partial: 'form', locals: { task: @task }

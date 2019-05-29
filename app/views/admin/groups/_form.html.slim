@@ -1,0 +1,10 @@
+- if group.errors.present?
+  ul#error_explanation
+    - group.errors.full_messages.each do |message|
+      li= message
+
+= form_with model: [:admin, group], local: true do |f|
+  .form-group
+    = f.label :name, Group.human_attribute_name(:name)
+    = f.text_field :name, class: 'form-control'
+  = f.submit nil, class: 'btn btn-primary'

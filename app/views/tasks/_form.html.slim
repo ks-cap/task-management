@@ -6,18 +6,35 @@
 
 = form_with model: task, local: true do |f|
   .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control', id: 'task_name'
+    .col-sm-12
+      = f.label :name
+      = f.text_field :name, class: 'form-control', id: 'task_name',
+              placeholder: I18n.t('message.tasks.name.insert')
   .form-group
-    = f.label :description
-    = f.text_area :description, rows: 5, class: 'form-control', id: 'task_description'
+    .col-sm-12
+      = f.label :description
+      = f.text_area :description, rows: 5, class: 'form-control', id: 'task_description',
+              placeholder: I18n.t('message.tasks.description.insert')
   .form-group
-    = f.label :deadline
-    = f.date_select :deadline, {}, class: 'col-sm-2 form-control date-picker', id: 'task_deadline'
+    .col-sm-12
+      = f.label :startline
+      = f.datetime_select :startline, {include_blank: true, use_month_numbers: true, date_separator: ' / '},
+              class: 'col-sm-1 col-form-control date-picker', id: 'task_startline'
   .form-group
-    = f.label :state
-    = f.select :state, Task.states.keys.to_a, {include_blank: true}, class: 'form-control', id: 'task_state'
+    .col-sm-12
+      = f.label :deadline
+      = f.datetime_select :deadline, {include_blank: true, use_month_numbers: true, date_separator: ' / '},
+              class: 'col-sm-1 col-form-control date-picker', id: 'task_deadline'
   .form-group
-    = f.label :image
-    = f.file_field :image, class: 'form-control'
+    .col-sm-12
+      = f.label :state
+      = f.select :state, Task.states.keys.map { |k| [I18n.t("activerecord.enums.task.state.#{k}"), k] }, id: 'task_state'
+  .form-group
+    .col-sm-12
+      = f.label :tag_list
+      = f.text_field :tag_list, value: task.tag_list.join(','), "data-role" => "tagsinput", class: 'form-control'
+  .form-group
+    .col-sm-12
+      = f.label :image
+      = f.file_field :image, class: 'form-control'
   = f.submit nil, class: 'btn btn-primary'

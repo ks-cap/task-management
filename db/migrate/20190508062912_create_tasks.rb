@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class CreateTasks < ActiveRecord::Migration[5.2]
   def change
     create_table :tasks do |t|
-      t.string :name
-      t.text :description
+      t.string :name, null: false, limit: 30
+      t.text :description, limit: 100
 
       t.timestamps
     end

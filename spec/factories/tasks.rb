@@ -1,9 +1,13 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :task do
-    name { 'テストを書く' }
-    description { 'RSpec & Capybara & FactoryBot を準備する' }
-    deadline { Time.zone.now }
-    state { '着手中' }
-    association :user, factory: :admin_user
+    association :user, factory: :user
+
+    name { 'Task title' }
+    description { 'Task description' }
+    startline { Time.current + Random.new.rand((24*30)*60*60) }
+    deadline { startline + Random.new.rand((24*30)*60*60) }
+    state { 0 }
   end
 end

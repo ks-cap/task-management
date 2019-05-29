@@ -1,0 +1,5 @@
+.alert class="alert-warning"
+  | #{I18n.t('message.tasks.expered')}
+  ul#error_explanation
+    - expired_tasks.each do |task|
+      li= link_to task.name, task

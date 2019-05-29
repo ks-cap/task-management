@@ -1,0 +1,6 @@
+h1 = I18n.t('users.edit.title')
+
+.nav.justify-content-end
+  = link_to I18n.t('button.list'), users_path, class: 'nav-link'
+
+= render partial: 'form', locals: { user: @user }

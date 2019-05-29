@@ -1,0 +1,14 @@
+.mb-3
+  table.table.table-hover
+    thead
+      tr
+        th= User.human_attribute_name(:name)
+        th= User.human_attribute_name(:email)
+        th
+    tbody
+      - group.users.each do |user|
+        tr
+          td= link_to user.name, user_path(user)
+          td= user.email
+          td
+            = link_to I18n.t('button.edit'), edit_user_path(user), class: 'btn btn-primary mr-3'
