@@ -11,32 +11,27 @@ User.find_or_create_by!(email: 'admin@example.com') do |user|
   user.password_confirmation = 'password'
 end
 
-3.times do |n|
-  FactoryBot.create(:group, name: "test_group_#{n}", owner: User.first)
+FactoryBot.create(:group, name: "test_group_admin", owner: User.first)
+
+2.times do |n|
+  FactoryBot.create(:user, name: "test_user_#{n}", email: "test_email_#{n}@example.com", group: Group.first)
 end
 
-5.times do |n|
-  case n % 3
-  when 0 then
-    FactoryBot.create(:user, name: "test_user_#{n}", email: "test_email_#{n}@example.com", group: Group.first)
-  when 1 then
-    FactoryBot.create(:user, name: "test_user_#{n}", email: "test_email_#{n}@example.com", group: Group.second)
-  when 2 then
-    FactoryBot.create(:user, name: "test_user_#{n}", email: "test_email_#{n}@example.com", group: Group.third)
-  end
+FactoryBot.create(:group, name: "test_group_A", owner: User.second)
+
+for i in 2..3 do
+  FactoryBot.create(:user, name: "test_user_#{i}", email: "test_email_#{i}@example.com", group: Group.second)
 end
 
-50.times do |n|
-  case n % 5
+30.times do |n|
+  case n % 4
   when 0 then
     FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.first, owner: User.first, tag_list: ["rails","php","js","python"])
   when 1 then
-    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.second, owner: User.fourth, tag_list: ["swift","python"])
+    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.second, owner: User.second, tag_list: ["swift","python"])
   when 2 then
-    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.third, owner: User.fifth, tag_list: ["js"])
+    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.third, owner: User.third, tag_list: ["js"])
   when 3 then
-    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.second, owner: User.second, tag_list: [""])
-  when 4 then
-    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.third, owner: User.third, tag_list: ["swift"])
+    FactoryBot.create(:task, state: rand(3), name: "タイトル_#{n}", user: User.fourth, owner: User.fourth, tag_list: [""])
   end
 end
