@@ -14,8 +14,9 @@ html
     script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"
     /! drawer.js
     script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"
-  body.drawer.drawer--left
-    .app-title.navbar.navbar-expand-md.navbar-light.bg-light
+
+  body.drawer.drawer--left style="padding-top:4.5rem;" 
+    .app-title.navbar.navbar-expand-md.navbar-light.bg-light.fixed-top
       .navbar-brand= link_to "TaskManagement", tasks_path, class: 'nav-link'
       ul.navbar-nav.ml-auto
         /= render 'layouts/header'
@@ -26,6 +27,7 @@ html
         - if current_user
           li.nav-item= link_to "ユーザー名：#{current_user.name}", tasks_path, class: 'nav-link'
           li.nav-item= link_to I18n.t('tasks.index.title'), tasks_path, class: 'nav-link'
+          li.nav-item= link_to I18n.t('calendars.index.title'), calendars_path, class: 'nav-link'
           - if current_user.admin?
             li.nav-item= link_to I18n.t('users.index.title'), admin_users_path, class: 'nav-link'
             li.nav-item= link_to I18n.t('groups.index.title'), admin_groups_path, class: 'nav-link'

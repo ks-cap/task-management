@@ -34,3 +34,6 @@ ja:
       title: グループ新規作成
     edit:
       title: グループ編集
+  calendars:
+    index:
+      title: タスクカレンダー
