@@ -34,7 +34,7 @@
           = f.label :state_eq, Task.human_attribute_name(:state), class: 'col-sm-2 col-form-label'
           .col-sm-2
             = f.select :state_eq, Task.states.map { |k, v| [I18n.t("activerecord.enums.task.state.#{k}"), v] }, {include_blank: true},  class: 'form-control'
-        .form-group.row
+        /.form-group.row
           = f.label :tag_list_eq, Task.human_attribute_name(:tag_list), class: 'col-sm-2 col-form-label'
           .col-sm-2
             /= f.select :tag_list_eq, Task.tags_on(:tags), {include_blank: true},  class: 'form-control'
@@ -52,46 +52,49 @@
 
 .mt-3
   .card
-    .card-body
-      .form-group.row
-        .col-sm-10
+    .card-header
+      .row
+        .col-lg-10
+          h4 = I18n.t('tasks.index.title')
+        .col-lg-2
           = link_to I18n.t('button.new'), new_task_path, class: 'btn btn-outline-primary'
-        .col-sm-10
-          = link_to I18n.t('button.export'), tasks_path(format: :csv), class: 'btn btn-outline-primary'
-        .col-sm-10
-          = form_tag tasks_import_csvs_path, multipart: true do
-            = file_field_tag :file
-            = submit_tag I18n.t('button.import'), class: 'btn btn-outline-primary'
+    .card-body
+      table.table.table-hover
+        thead.thead-default
+          tr
+            th= sort_link(@q, :name)
+            th= sort_link(@q, :state)
+            th= Task.human_attribute_name(:tag_list)
+            th= sort_link(@q, :startline)
+            th= sort_link(@q, :deadline)
+            th= Task.human_attribute_name(:owner)
+            th
+        tboby
+          - @tasks.each do |task|
+            tr id="task-#{task.id}"
+              td= link_to task.name, task_path(task)
+              td= I18n.t("activerecord.enums.task.state.#{task.state}")
+              td= render 'tasks/tag_list', tag_list: task.tag_list
+              td= l(task.startline, format: :long)
+              td= l(task.deadline, format: :long)
+              td
+                - if task.owner.name == current_user.name
+                  | 自分
+              td
+                - if task.editable?(current_user)
+                  = link_to I18n.t('button.edit'), edit_task_path(task), class: 'btn btn-primary mr-3'
+                  = link_to I18n.t('button.destroy'), task, method: :delete, remote: false,
+                          data: { confirm: I18n.t('message.tasks.destroy_check', name: task.name) },
+                          class: 'btn btn-danger delete'
 
 .mt-3
-  table.table.table-hover
-    thead.thead-default
-      tr
-        th= sort_link(@q, :name)
-        th= sort_link(@q, :state)
-        th= Task.human_attribute_name(:tag_list)
-        th= sort_link(@q, :startline)
-        th= sort_link(@q, :deadline)
-        th= Task.human_attribute_name(:owner)
-        th
-    tboby
-      - @tasks.each do |task|
-        tr id="task-#{task.id}"
-          td= link_to task.name, task_path(task)
-          td= I18n.t("activerecord.enums.task.state.#{task.state}")
-          td= render 'tasks/tag_list', tag_list: task.tag_list
-          td= l(task.startline, format: :long)
-          td= l(task.deadline, format: :long)
-          td
-            - if task.owner.name == current_user.name
-              | 自分
-          td
-            - if task.editable?(current_user)
-              = link_to I18n.t('button.edit'), edit_task_path(task), class: 'btn btn-primary mr-3'
-              = link_to I18n.t('button.destroy'), task, method: :delete, remote: false,
-                      data: { confirm: I18n.t('message.tasks.destroy_check', name: task.name) },
-                      class: 'btn btn-danger delete'
-
-.mb-3
   = paginate @tasks
   = page_entries_info @tasks
+
+.mt-3
+  .col-sm-10
+    = link_to I18n.t('button.export'), tasks_path(format: :csv), class: 'btn btn-outline-primary'
+  .col-sm-10
+    = form_tag tasks_import_csvs_path, multipart: true do
+      = file_field_tag :file
+      = submit_tag I18n.t('button.import'), class: 'btn btn-outline-primary'
