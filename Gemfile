@@ -88,3 +88,6 @@ gem 'timecop'
 
 # Tag
 gem 'acts-as-taggable-on'
+
+gem 'momentjs-rails'
+gem 'fullcalendar-rails'

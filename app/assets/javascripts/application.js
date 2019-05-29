@@ -14,4 +14,7 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery3
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/lang/ja
 //= require_tree .
