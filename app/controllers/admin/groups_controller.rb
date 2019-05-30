@@ -31,7 +31,7 @@ class Admin::GroupsController < ApplicationController
   end
 
   def update
-    if @group.update
+    if @group.update(group_params)
       flash[:success] = I18n.t('message.groups.update', name: @group.name)
       redirect_to admin_group_url(@group)
     else

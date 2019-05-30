@@ -21,7 +21,7 @@ h1 = I18n.t('groups.show.title')
 
 = render partial: 'user_list', locals: { group: @group } if @group.users.present?
 
-= link_to I18n.t('button.edit'), admin_group_path(@group), class: 'btn btn-primary mr-3'
+= link_to I18n.t('button.edit'), edit_admin_group_path(@group), class: 'btn btn-primary mr-3'
 = link_to I18n.t('button.destroy'), [:admin, @group], method: :delete,
         data: {confirm: I18n.t('message.groups.destroy_check', name: @group.name)},
         class: 'btn btn-danger delete'
