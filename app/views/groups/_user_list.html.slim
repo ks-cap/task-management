@@ -11,4 +11,5 @@
           td= link_to user.name, user_path(user)
           td= user.email
           td
-            = link_to I18n.t('button.edit'), edit_user_path(user), class: 'btn btn-primary mr-3'
+            - if user.id == current_user.id
+              = link_to I18n.t('button.edit'), edit_user_path(user), class: 'btn btn-primary mr-3'

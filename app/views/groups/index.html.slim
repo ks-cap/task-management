@@ -16,12 +16,12 @@ h1 = I18n.t('groups.index.title')
           td= l(group.created_at, format: :long)
           td
             - if group.owner.id == current_user.id
-              = link_to I18n.t('button.edit'), edit_admin_group_path(group), class: 'btn btn-primary'
-              = link_to I18n.t('button.destroy'), admin_group_path(group), method: :delete,
+              = link_to I18n.t('button.edit'), edit_group_path(group), class: 'btn btn-primary'
+              = link_to I18n.t('button.destroy'), group_path(group), method: :delete,
                       data: { confirm: I18n.t('message.groups.destroy_check', name: group.name) },
                       class: 'btn btn-danger'
 
-= link_to I18n.t('button.new'), new_admin_group_path, class: 'btn btn-success'
+= link_to I18n.t('button.new'), new_group_path, class: 'btn btn-success'
 
 .mb-3
   = paginate @groups
