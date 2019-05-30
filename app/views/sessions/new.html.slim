@@ -3,8 +3,8 @@ h1 = I18n.t('sessions.title')
 = form_with scope: :session, local: true do |f|
   .form-group
     = f.label :email, I18n.t('activerecord.attributes.session.email')
-    = f.text_field :email, class: 'form-control', id: 'session_email'
+    = f.text_field :email, class: 'form-control', id: 'session_email', placeholder: I18n.t('message.sessions.mail.insert')
   .form-group
     = f.label :password, I18n.t('activerecord.attributes.session.password')
-    = f.password_field :password, class: 'form-control', id: 'session_password'
+    = f.password_field :password, class: 'form-control', id: 'session_password', placeholder: I18n.t('message.sessions.password.insert')
   = f.submit I18n.t('button.login'), class: 'btn btn-primary'

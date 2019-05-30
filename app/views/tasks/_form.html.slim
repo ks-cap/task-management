@@ -32,7 +32,8 @@
   .form-group
     .col-sm-12
       = f.label :tag_list
-      = f.text_field :tag_list, value: task.tag_list.join(','), "data-role" => "tagsinput", class: 'form-control'
+      = f.text_field :tag_list, value: task.tag_list.join(','), "data-role" => "tagsinput",
+              class: 'form-control', id: 'task_tag', placeholder: I18n.t('message.tasks.tag.insert')
   .form-group
     .col-sm-12
       = f.label :image

@@ -12,6 +12,8 @@ ja:
         insert: タスク名を入力してください
       description:
         insert: 詳しい説明を入力してください
+      tag:
+        insert: 複数入力する場合は半角カンマ（,）区切りで入力してください
     users:
       create: "ユーザー「%{name}」を登録しました"
       update: "ユーザー「%{name}」を更新しました"
@@ -29,8 +31,14 @@ ja:
     sessions:
       login: ログインしました
       logout: ログアウトしました
+      mail:
+        insert: メールアドレスを入力してください
+      password:
+        insert: パスワードを入力してください
     groups:
       create: "グループ「%{name}」を登録しました"
       update: "グループ「%{name}」を更新しました"
       destroy: "グループ「%{name}」を削除しました"
       destroy_check: "グループ「%{name}」を削除します。よろしいですか？"
+      name:
+        insert: グループ名を入力してください
