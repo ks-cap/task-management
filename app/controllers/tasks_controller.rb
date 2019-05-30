@@ -78,11 +78,7 @@ class TasksController < ApplicationController
   end
 
   def set_task
-    @task = if current_user.admin?
-              Task.find(params[:id])
-            else
-              current_user.tasks.find(params[:id])
-            end
+    @task = Task.find(params[:id])
   end
 
   def only_my_group_editable
